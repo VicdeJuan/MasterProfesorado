@@ -1,0 +1,492 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{tikztools}[2014/04/07 Extended tikz tools]
+
+\RequirePackage{tikz}
+\RequirePackage{pgfplots}
+\usetikzlibrary{decorations.pathmorphing,decorations.markings,patterns,intersections,positioning,external,calc, shapes.misc}
+
+\makeatletter
+
+\tikzset{>=latex}
+
+%% Self-explanatory node styles.
+\tikzstyle{nodepoint}=[inner sep=1pt, circle, draw, black, fill=black]
+\tikzset{cross/.style={cross out, draw=black, fill=none, minimum size=2*(#1 - \pgflinewidth), inner sep = 0pt, outer sep = 0pt}, cross/.default={2pt}}
+\tikzstyle{vnlin}=[rectangle, inner sep=0pt, minimum height=6pt, minimum width=0pt, draw, fill=black]
+\tikzstyle{hnlin}=[rectangle, inner sep=0pt, minimum height=0pt, minimum width=6pt, draw, fill=black]
+
+%% Styles to draw arrows as line decorations.
+\tikzstyle{dense directed}=[postaction={decorate,decoration={markings,
+    mark=between positions 0.2 and 0.8 step 1cm with {\arrow{stealth};}}}]
+
+\tikzstyle{full directed}=[postaction={decorate,decoration={markings,
+    mark=between positions 0 and 1 step 1cm with {\arrow{stealth};}}}]
+
+\tikzstyle{directed}=[postaction={decorate,decoration={markings,
+        mark=at position 0.5 with {\arrow[scale=1.3]{stealth};}}}]
+
+\tikzstyle{sparse directed}=[postaction={decorate,decoration={markings,
+        mark=between positions 0.25 and 0.75 step 0.25 with {\arrow[scale=1.3]{stealth};}}}]
+
+\tikzstyle{plot directed}=[postaction={decorate,decoration={markings,
+    mark=between positions 0.05 and 0.95 step 0.7cm with {\arrow{stealth};}}}]
+
+\tikzstyle{invert dense directed}=[postaction={decorate,decoration={markings,
+    mark=between positions 0.2 and 0.8 step 1cm with {\arrowreversed{stealth};}}}]
+
+\tikzstyle{invert full directed}=[postaction={decorate,decoration={markings,
+    mark=between positions 0 and 1 step 1cm with {\arrowreversed{stealth};}}}]
+
+\tikzstyle{invert directed}=[postaction={decorate,decoration={markings,
+        mark=at position 0.5 with {\arrowreversed[scale=1.3]{stealth};}}}]
+
+\tikzstyle{invert sparse directed}=[postaction={decorate,decoration={markings,
+        mark=between positions 0.25 and 0.75 step 0.25 with {\arrowreversed[scale=1.3]{stealth};}}}]
+
+\tikzstyle{invert plot directed}=[postaction={decorate,decoration={markings,
+    mark=between positions 0.05 and 0.95 step 0.7cm with {\arrowreversed{stealth};}}}]
+
+\tikzstyle{really dense directed}=[postaction={decorate,decoration={markings,
+    mark=between positions 0.1 and 0.9 step 0.25cm with {\arrow{stealth};}}}]
+
+%% Allow cached compilations of tikz drawings (see fastbuild.sty) when using this command.
+\newcommand{\inputtikz}[1]{\centering\tikzsetnextfilename{#1.tgen}\input{tikz/#1.tex}\tikzpicturedependsonfile{tikz/#1.tex}}
+
+%% A set of commands to allow plotting families of curves
+
+% Parameter definition for \curvefam
+\pgfkeys{
+	/cfam/.is family,
+	/cfam,
+	start/.estore in = \crvf@start,
+	start/.value required,
+	end/.estore in = \crvf@end,
+	end/.value required,
+	step/.estore in = \crvfstep,
+	step/.value required,
+	boffset/.estore in = \crvf@beginoffset@step,
+	boffset/.value required,
+	eoffset/.estore in = \crvf@endoffset@step,
+	eoffset/.value required,
+	etarget/.estore in = \crvf@endoffset@node,
+	etarget/.value required,
+	btarget/.estore in = \crvf@beginoffset@node,
+	btarget/.value required,
+	offset/.value required,
+	offset/.code={ %
+		\def\crveofsetnode{#1}
+		\def\crvbofsetnode{#1}
+	},
+	default/.style =
+	  {start = 0, end = 1, step = 0.1, boffset = 0, eoffset = 0,
+	  etarget=CFA,btarget=CFB},
+	.unknown/.code={%
+		\let\currname\pgfkeyscurrentname%
+		\let\currval\pgfkeyscurrentvalue%
+
+		\ifx#1\pgfkeysnovalue%
+			\pgfkeys{cfam/remainingkeys/.append style/.expand once={\currname}}%
+		\else%
+	 		\pgfkeys{cfam/remainingkeys/.append style/.expand twice={\expandafter\currname\expandafter=\currval}}%
+		\fi%
+	}%
+}
+
+% \curvefam[opts]{Begin}{End}{Puller}
+% Draws a number of curves from Begin to End that are more or less "pulled" by Puller.
+% Begin, End and Puller should be nodes or coordinates, in the form (0,1) or (A).
+% Optional arguments:
+% - opts: Options that will be passed to the drawn lines.
+% - start, end: Controls the range of "pulling" of the drawn curves.
+% - step: A lower step means more drawn lines.
+% - btarget/etarget: If we want the curve family not to begin/end on the same point, but
+%		on several points along a segment, we can use these parameters. The value is either
+%		the name of a node or the coordinates (delimited by {}, such as btarget = {3,2}, or
+%		LaTeX will crash parsing that option).
+% - boffset/eoffset: Controls the separation between line starts/ends when btarget/etarget
+%		is set.
+% - offset: Sets both boffset and eoffset at the same time. Deprecated.
+\newcommand{\curvefam}[4][]{
+	\pgfkeys{/cfam, default, #1}
+	\edef\crvf@pa{#2}
+	\edef\crvf@pb{#3}
+	\edef\crvf@tr{#4}
+
+	\node (CFA) at \crvf@pa {}; 	% Where the curve family begins
+	\node (CFB) at \crvf@pb {};		% Where the curve family ends
+	\node (CFTR) at \crvf@tr {}; 	% Tractor point to bend the lines.
+
+	% Just a helper for the loop
+	\pgfmathsetmacro{\crvf@next}{\crvf@end - \crvfstep}
+
+	\foreach \x [count=\i] in {\crvf@end,\crvf@next,...,\crvf@start}
+	{
+		\pgfmathsetmacro{\crvf@beginoffset}{\i * \crvf@beginoffset@step}
+		\pgfmathsetmacro{\crvf@endoffset}{\i * \crvf@endoffset@step}
+
+		% Use the remaining options from the command passing them to the
+		% draw line command.
+		\draw[/cfam/remainingkeys]
+			% Start from the start point plus a certain offset in the direction of
+			% the begin offset node (which by default is the same CFA, so no actual offset)
+			% is done
+			($(CFA) + \crvf@beginoffset*(\crvf@beginoffset@node) - \crvf@beginoffset*(CFA)$)
+			% Move, with controls (so we get a curved line) to a point between CFA and CFB
+			% and closer to CFTR as \x is greater.
+			..controls ( $(CFA)!.5!(CFB)!\x!(CFTR)$ )
+			% Finish in CFB plus the offset calculated in the same way that with CFA.
+			.. ($(CFB) + \crvf@endoffset*(\crvf@endoffset@node) - \crvf@endoffset*(CFB)$);
+	}
+}
+
+%% Draw the normals to a given curve
+
+\pgfkeys{
+	/cnorm/.is family,
+	/cnorm,
+	length/.estore in = \cnlen,
+	length/.value required,
+	default/.style =
+	  { length=0.5cm },
+	.unknown/.code={%
+		\let\currname\pgfkeyscurrentname%
+		\let\currval\pgfkeyscurrentvalue%
+
+		\ifx#1\pgfkeysnovalue%
+			\pgfkeys{cnorm/remainingkeys/.append style/.expand once={\currname}}%
+		\else%
+	 		\pgfkeys{cnorm/remainingkeys/.append style/.expand twice={\expandafter\currname\expandafter=\currval}}%
+		\fi%
+	}%
+}
+
+% \curveNormal[opts]{f(\x)}
+% Draws the normal curves to f(\x). Eg: \curveNormal{sin(\x)}
+\newcommand{\curveNormal}[2][]{ %
+	\pgfkeys{/cnorm, default, #1}
+	\coordinate (O) at (\x, {#2});
+	\edef\x{\x + 0.1}
+	\coordinate (OD) at (\x, {#2});
+	\draw[->, /cnorm/remainingkeys] (O) -- ($(O)!\cnlen!90:(OD)$);
+}
+
+%% Angle drawing comand
+
+\pgfkeys{
+	/angle/.is family,
+	/angle,
+	name/.estore in = \aname,
+	name/.value required,
+	radius/.estore in = \aradius,
+	radius/.value required,
+	sepradius/.estore in = \asepradius,
+	sepradius/.value required,
+	default/.style =
+	  { name={}, radius=5mm, sepradius=3mm },
+	.unknown/.code={%
+		\let\currname\pgfkeyscurrentname%
+		\let\currval\pgfkeyscurrentvalue%
+
+		\ifx#1\pgfkeysnovalue%
+			\pgfkeys{angle/remainingkeys/.append style/.expand once={\currname}}%
+		\else%
+	 		\pgfkeys{angle/remainingkeys/.append style/.expand twice={\expandafter\currname\expandafter=\currval}}%
+		\fi%
+	}%
+}
+
+% \tikzangle[opts]{V}{A}{B}
+% Marks the angle AVB, with V being the vertex.
+% opts:
+%	- name: name of the angle (for the label).
+%	- radius: Radius
+%	- sepradius: Separation from the angle shading to the label
+% Additional options are passed to the angle shading command.
+\newcommand{\tikzangle}[4][]{ %
+	\pgfkeys{/angle, default, #1}
+	\begin{scope}
+			\clip (#2) -- (#3) -- (#4) -- (#2);
+			\fill[red, draw=black, opacity=0.2, /angle/remainingkeys] (#2) circle (\aradius);
+			\node (bisect_a) at ($(#2)!5mm!(#3)$) {};
+			\node (bisect_b) at ($(#2)!5mm!(#4)$) {};
+			\node (bisect) at ($(bisect_a)!0.5!(bisect_b)$) {};
+			\node[anchor=center] at ($(#2)!\aradius + \asepradius!(bisect)$) {\aname};
+	\end{scope}
+}
+
+%%% Manifold shapes for nodes. Example: \node[draw, manifold 1, minimum height = 3pt, minimum width = 5pt] at ...
+
+% Create some basic variables to hold some offsets.
+\newlength{\mnf@xoff@vert}
+\newlength{\mnf@yoff@vert}
+\newlength{\mnf@xoff@horiz}
+\newlength{\mnf@yoff@horiz}
+
+\pgfdeclareshape{manifold 1}{
+	\savedanchor\centerpoint\pgfpointorigin
+
+	% Set some anchor points taking into account min height and width.
+	\savedanchor\upperrightcorner{
+		\setlength{\pgf@yc}{\pgfshapeminheight}
+		\ifdim\pgf@y<.5\pgf@yc
+    		\pgf@y=.5\pgf@yc
+  		\fi
+  		\setlength{\pgf@xc}{\pgfshapeminwidth}
+		\ifdim\pgf@x<.5\pgf@xc
+    		\pgf@x=.5\pgf@xc
+  		\fi
+	}
+
+	\savedanchor\lowerrightcorner{
+		\setlength{\pgf@yc}{\pgfshapeminheight}
+		\ifdim\pgf@y>-.5\pgf@yc
+			\pgf@y=-.5\pgf@yc
+  		\fi
+  		\setlength{\pgf@xc}{\pgfshapeminwidth}
+		\ifdim\pgf@x<.5\pgf@xc
+    		\pgf@x=.5\pgf@xc
+  		\fi
+	}
+
+	% Define anchor points (borders) of the shape.
+	\anchor{center}{\centerpoint}
+
+	\anchor{south}{\lowerrightcorner\pgf@x=0pt \pgf@y=0.7\pgf@y}
+	\anchor{north}{\upperrightcorner\pgf@x=0pt \pgf@y=1.3\pgf@y}
+	\anchor{east} {\lowerrightcorner\pgf@y=0pt \pgf@x=0.7\pgf@x}
+	\anchor{west} {\lowerrightcorner\pgf@y=0pt \pgf@x=-1.3\pgf@x}
+	\anchor{south east}{\lowerrightcorner}
+	\anchor{north east}{\upperrightcorner}
+	\anchor{north west}{\pgfpointscale{-1}{\lowerrightcorner}}
+	\anchor{south west}{\pgfpointscale{-1}{\upperrightcorner}}
+
+	\anchorborder{\centerpoint}
+
+	\anchorborder{%
+		% Call a function that computes a border point. Since this
+		% function will modify dimensions like \pgf@x, we must move them to
+		% other dimensions.
+		\@tempdima=\pgf@x
+		\@tempdimb=\pgf@y
+		\pgfpointborderrectangle
+			{\pgfpoint{\@tempdima}{\@tempdimb}}
+			{\pgfpointscale{1}{\upperrightcorner}}
+	}
+
+	% Draw the shape.
+	\backgroundpath{
+		% Store the coordinates (x,y) of the upper right corner
+		% Don't use \pgf@xa or \pgf@xb because they seem to get overwritten
+		\upperrightcorner 	\pgf@xc=\pgf@x \pgf@yc=\pgf@y
+
+		% Calculate the "bending" amount of the sides, based on the width and
+		% height of the node.
+		\setlength{\mnf@xoff@vert}{\pgfshapeminwidth}
+		\mnf@xoff@vert=0.2\mnf@xoff@vert
+
+		\setlength{\mnf@yoff@vert}{\pgfshapeminheight}
+		\mnf@yoff@vert=0.3\mnf@yoff@vert
+
+		\setlength{\mnf@xoff@horiz}{\pgfshapeminwidth}
+		\mnf@xoff@horiz=0.3\mnf@xoff@horiz
+
+		\setlength{\mnf@yoff@horiz}{\pgfshapeminheight}
+		\mnf@yoff@horiz=0.2\mnf@yoff@horiz
+
+		% Draw using bezier curves.
+		\pgfpathmoveto{\pgfpoint{\pgf@xc}{\pgf@yc}}
+		\pgfpathcurveto
+			{\pgfpoint{\pgf@xc - \mnf@xoff@vert}{\pgf@yc - \mnf@yoff@vert}}
+			{\pgfpoint{\pgf@xc - \mnf@xoff@vert}{- \pgf@yc + \mnf@yoff@vert}}
+			{\pgfpoint{\pgf@xc}{-\pgf@yc}}
+
+		\pgfpathcurveto
+			{\pgfpoint{\pgf@xc - \mnf@xoff@horiz}{-\pgf@yc + \mnf@yoff@horiz}}
+			{\pgfpoint{-\pgf@xc + \mnf@xoff@horiz}{- \pgf@yc + \mnf@yoff@horiz}}
+			{\pgfpoint{-\pgf@xc}{-\pgf@yc}}
+
+		\pgfpathcurveto
+			{\pgfpoint{-\pgf@xc - \mnf@xoff@vert}{-\pgf@yc + \mnf@yoff@vert}}
+			{\pgfpoint{-\pgf@xc - \mnf@xoff@vert}{\pgf@yc - \mnf@yoff@vert}}
+			{\pgfpoint{-\pgf@xc}{\pgf@yc}}
+
+		\pgfpathcurveto
+			{\pgfpoint{-\pgf@xc + \mnf@xoff@horiz}{\pgf@yc + \mnf@yoff@horiz}}
+			{\pgfpoint{\pgf@xc - \mnf@xoff@horiz}{\pgf@yc + \mnf@yoff@horiz}}
+			{\pgfpoint{\pgf@xc}{\pgf@yc}}
+	}
+}
+
+\pgfdeclareshape{manifold 2}{
+	% Same syntax as above command, I'm not going to comment it again.
+	\savedanchor\centerpoint\pgfpointorigin
+
+	\savedanchor\upperrightcorner{
+		\setlength{\pgf@yc}{\pgfshapeminheight}
+		\ifdim\pgf@y<.5\pgf@yc
+    		\pgf@y=.5\pgf@yc
+  		\fi
+  		\setlength{\pgf@xc}{\pgfshapeminwidth}
+		\ifdim\pgf@x<.5\pgf@xc
+    		\pgf@x=.5\pgf@xc
+  		\fi
+	}
+
+	\anchor{center}{\centerpoint}
+
+	\anchor{south}{\upperrightcorner\pgf@x=0pt \pgf@y=0.87\pgf@y}
+	\anchor{north}{\upperrightcorner\pgf@x=0pt \pgf@y=-0.87\pgf@y}
+	\anchor{east} {\upperrightcorner\pgf@y=0pt \pgf@x=\pgf@x}
+	\anchor{west} {\upperrightcorner\pgf@y=0pt \pgf@x=-0.93\pgf@x}
+	\anchor{south east}{\upperrightcorner\pgf@y=-\pgf@y \pgf@x=0.7\pgf@x}
+	\anchor{north east}{\upperrightcorner}
+	\anchor{north west}{\upperrightcorner \pgf@x=-0.7\pgf@x}
+	\anchor{south west}{\upperrightcorner\pgf@y=-\pgf@y \pgf@x=-\pgf@x}
+
+	\anchorborder{\centerpoint}
+
+	\anchorborder{%
+		% Call a function that computes a border point. Since this
+		% function will modify dimensions like \pgf@x, we must move them to
+		% other dimensions.
+		\@tempdima=\pgf@x
+		\@tempdimb=\pgf@y
+		\pgfpointborderrectangle
+			{\pgfpoint{\@tempdima}{\@tempdimb}}
+			{\pgfpointscale{1}{\upperrightcorner}}
+	}
+
+	\backgroundpath{
+		\upperrightcorner 	\pgf@xc=\pgf@x \pgf@yc=\pgf@y
+
+		\setlength{\mnf@xoff@vert}{\pgfshapeminwidth}
+		\mnf@xoff@vert=0.05\mnf@xoff@vert
+
+		\setlength{\mnf@yoff@vert}{\pgfshapeminheight}
+		\mnf@yoff@vert=0.3\mnf@yoff@vert
+
+		\setlength{\mnf@xoff@horiz}{\pgfshapeminwidth}
+		\mnf@xoff@horiz=0.3\mnf@xoff@horiz
+
+		\setlength{\mnf@yoff@horiz}{\pgfshapeminheight}
+		\mnf@yoff@horiz=0.5\mnf@yoff@horiz
+
+		\pgfpathmoveto{\pgfpoint{\pgf@xc}{\pgf@yc}}
+		\pgfpathcurveto
+			{\pgfpoint{\pgf@xc}{\pgf@yc - \mnf@yoff@vert}}
+			{\pgfpoint{\pgf@xc + \mnf@xoff@vert}{- \pgf@yc + \mnf@yoff@vert}}
+			{\pgfpoint{0.7\pgf@xc}{-\pgf@yc}}
+
+		\pgfpathcurveto
+			{\pgfpoint{0.7\pgf@xc - \mnf@xoff@horiz}{-\pgf@yc + \mnf@yoff@horiz}}
+			{\pgfpoint{-\pgf@xc + \mnf@xoff@horiz}{- \pgf@yc - \mnf@yoff@horiz}}
+			{\pgfpoint{-\pgf@xc}{-\pgf@yc}}
+
+		\pgfpathcurveto
+			{\pgfpoint{-\pgf@xc}{-\pgf@yc + \mnf@yoff@vert}}
+			{\pgfpoint{-\pgf@xc + \mnf@xoff@vert}{\pgf@yc - \mnf@yoff@vert}}
+			{\pgfpoint{-0.7\pgf@xc}{\pgf@yc}}
+
+		\pgfpathcurveto
+			{\pgfpoint{-0.7\pgf@xc + \mnf@xoff@horiz}{\pgf@yc - \mnf@yoff@horiz}}
+			{\pgfpoint{\pgf@xc - \mnf@xoff@horiz}{\pgf@yc + \mnf@yoff@horiz}}
+			{\pgfpoint{\pgf@xc}{\pgf@yc}}
+	}
+}
+
+\pgfdeclareshape{region 1}{
+	\inheritsavedanchors[from=rectangle] % this is nearly a rectangle
+	\inheritanchorborder[from=rectangle]
+	\inheritanchor[from=rectangle]{center}
+	\inheritanchor[from=rectangle]{north}
+	\anchor{south}{
+		\northeast
+		\pgf@x=0\pgf@x
+		\pgf@y=-\pgf@y
+	}
+	\anchor{west}{
+		\northeast
+		\pgf@y=0.1\pgf@y
+		\pgf@x=-1.37\pgf@x
+	}
+	\inheritanchor[from=rectangle]{east}
+
+	% ... and possibly more
+	\backgroundpath{% this is new
+		\northeast \pgf@xc=\pgf@x \pgf@yc=\pgf@y
+
+		\pgfpathmoveto{\pgfpoint{\pgf@xc}{0pt}}
+		\pgfpathcurveto
+			{\pgfpoint{\pgf@xc}{-0.5\pgf@yc}}
+			{\pgfpoint{0.5\pgf@xc}{-\pgf@yc}}
+			{\pgfpoint{0pt}{-\pgf@yc}}
+		\pgfpathcurveto
+			{\pgfpoint{-2\pgf@xc}{-\pgf@yc}}
+			{\pgfpointorigin}
+			{\pgfpoint{-\pgf@xc}{0pt}}
+		\pgfpathcurveto
+			{\pgfpoint{-2\pgf@xc}{0pt}}
+			{\pgfpoint{-\pgf@xc}{\pgf@yc}}
+			{\pgfpoint{0pt}{\pgf@yc}}
+
+		\pgfpathcurveto
+			{\pgfpoint{\pgf@xc}{1\pgf@yc}}
+			{\pgfpoint{\pgf@xc}{0pt}}
+			{\pgfpoint{\pgf@xc}{0pt}}
+		\pgfpathclose
+	}
+}
+
+\pgfdeclareshape{region 2}{
+	\inheritsavedanchors[from=rectangle] % this is nearly a rectangle
+	\inheritanchorborder[from=rectangle]
+	\inheritanchor[from=rectangle]{center}
+	\anchor{north}{
+		\northeast
+		\pgf@x=0\pgf@x
+		\pgf@y=0.85\pgf@y
+	}
+	\anchor{south}{
+		\northeast
+		\pgf@x=0\pgf@x
+		\pgf@y=-0.85\pgf@y
+	}
+	\anchor{west}{
+		\northeast
+		\pgf@y=0\pgf@y
+		\pgf@x=-0.78\pgf@x
+	}
+	\anchor{east}{
+		\northeast
+		\pgf@y=-0.1\pgf@y
+		\pgf@x=1.08\pgf@x
+	}
+
+	% ... and possibly more
+	\backgroundpath{% this is new
+		\southwest \pgf@xc=\pgf@x \pgf@yc=\pgf@y
+
+		\pgfpathmoveto{\pgfpoint{\pgf@xc}{0pt}}
+		\pgfpathcurveto
+			{\pgfpoint{\pgf@xc}{-0.5\pgf@yc}}
+			{\pgfpoint{0.5\pgf@xc}{-\pgf@yc}}
+			{\pgfpoint{0pt}{-\pgf@yc}}
+		\pgfpathcurveto
+			{\pgfpoint{-2\pgf@xc}{-\pgf@yc}}
+			{\pgfpointorigin}
+			{\pgfpoint{-\pgf@xc}{0pt}}
+		\pgfpathcurveto
+			{\pgfpoint{-2\pgf@xc}{0pt}}
+			{\pgfpoint{-\pgf@xc}{\pgf@yc}}
+			{\pgfpoint{0pt}{\pgf@yc}}
+
+		\pgfpathcurveto
+			{\pgfpoint{\pgf@xc}{1\pgf@yc}}
+			{\pgfpoint{\pgf@xc}{0pt}}
+			{\pgfpoint{\pgf@xc}{0pt}}
+		\pgfpathclose
+	}
+}
+
+
+\makeatother

@@ -1,0 +1,87 @@
+\documentclass[palatino]{apuntes}
+
+\usepackage[usenames,dvipsnames]{xcolor}
+\usepackage{longtable}
+\usepackage{fancysprefs}
+\usepackage{minted}
+\usepackage{showexpl}
+\usepackage{etoolbox}
+\usepackage{booktabs}
+\usepackage{tikztools}
+\usepackage{pgfplots}
+
+\definecolor{lightgrey}{gray}{0.95}
+
+\lstset{basicstyle=\footnotesize\ttfamily}
+
+\lstset{language=[LaTeX]TeX,
+	texcsstyle=*\bf\color{blue},
+	numbers=none,
+	breaklines=true,
+	keywordstyle=\color{darkgreen},
+	commentstyle=\color{red},
+	frame=none,
+	tabsize=2,
+	backgroundcolor=\color{lightgrey}
+}
+
+\makeatletter
+\newlength{\parindent@save}
+\AtBeginDocument{\setlength{\parindent@save}{\parindent}}
+\patchcmd{\SX@put@code@result}% <cmd>
+  {\SX@resultInput}% <search>
+  {\setlength{\parindent}{\parindent@save}\SX@resultInput}% <replace>
+  {}{}% <success><failure>
+
+% Para que longtable funcione a doble columna
+\let\saved@longtable\longtable
+\long\def\foo#1\LT@err#2#3#4!!{\def\longtable{#1#4}}
+\expandafter\foo\longtable!!
+
+\long\def\foo#1\@outputpage#2\@outputpage#3!!{%
+\def\LT@output{#1\@opcol#2\@opcol#3}}
+\expandafter\foo\LT@output!!
+
+\makeatother
+
+% Para meter los comandos en el índice
+\newcommand{\cindex}[1]{\index{\textbackslash #1}}
+% Si son entornos
+\newcommand{\eindex}[1]{\cindex{begin\{#1\}}}
+
+\author{Guillermo Julián Moreno}
+\date{\today}
+\title{\LaTeX\ para infomates}
+
+\setcounter{tocdepth}{3}
+
+\begin{document}
+
+\begin{abstract}
+Este documento pretende ser un manual de uso de \LaTeX\ y de los paquetes personalizados que tenemos para escribir los \href{http://github.com/VicdeJuan/Apuntes}{apuntes de matemáticas e informática}. La idea es que sirva para aprender \LaTeX\ básico (\fref{chap:Introduccion}), que introduzca aspectos de \LaTeX\ avanzado (\fref{chap:LaTeXAvanzado}) y que documente los paquetes y comandos personalizados que hemos ido desarrollando a lo largo del tiempo (\fref{chap:PaqueteExtendido}). Al final del documento (pág. \pageref{sec:Index}) hay un índice alfabético de los comandos y conceptos tratados, para buscar rápidamente algún tema concreto en el texto.
+\end{abstract}
+
+\pagestyle{plain}
+\maketitle
+
+\newpage
+
+\tableofcontents
+
+\input{tex/LaTeX_Basico.tex}
+\input{tex/LaTeX_Avanzado.tex}
+\input{tex/Documentacion.tex}
+
+\appendix
+
+\twocolumn
+\chapter{Comandos}\label{chap:Comandos}
+\input{tex/cmds.tex}
+\onecolumn
+\normalsize
+
+\newpage
+\label{sec:Index}
+\printindex
+
+\end{document}

@@ -1,0 +1,123 @@
+\begin{theindex}
+
+  \item -shell-escape, \hyperpage{14}, \hyperpage{34}
+  \item \textbackslash alph, Alph, \hyperpage{19}
+  \item \textbackslash arabic, \hyperpage{19}
+  \item \textbackslash begin\{figure\}, \hyperpage{8}
+  \item \textbackslash begin\{tabular\}, \hyperpage{9}
+  \item \textbackslash begin\{tikzpicture\}, \hyperpage{20}
+  \item \textbackslash begin\{verbatim\}, \hyperpage{7}
+  \item \textbackslash caption, \hyperpage{9}
+  \item \textbackslash chapter, \hyperpage{6}
+  \item \textbackslash curvefam, \hyperpage{32}
+  \item \textbackslash def, \hyperpage{25}
+  \item \textbackslash displaystyle, \hyperpage{15}
+  \item \textbackslash documentclass, \hyperpage{5}
+  \item \textbackslash footnote, \hyperpage{10}
+  \item \textbackslash footnotemark, \hyperpage{10}
+  \item \textbackslash footnotetext, \hyperpage{10}
+  \item \textbackslash fref, \hyperpage{19}
+  \item \textbackslash hline, \hyperpage{9}
+  \item \textbackslash includegraphics, \hyperpage{8}
+  \item \textbackslash input, \hyperpage{18}
+  \item \textbackslash label, \hyperpage{9, 10}
+  \item \textbackslash left, \hyperpage{12}
+  \item \textbackslash leftmark, \hyperpage{20}
+  \item \textbackslash let, \hyperpage{25}
+  \item \textbackslash newcommand, \hyperpage{25}
+  \item \textbackslash newcommandx, \hyperpage{25}
+  \item \textbackslash newenvironment, \hyperpage{25}
+  \item \textbackslash newenvironmentx, \hyperpage{25}
+  \item \textbackslash newif, \hyperpage{26}
+  \item \textbackslash nref, \hyperpage{32}
+  \item \textbackslash nrefl, \hyperpage{32}
+  \item \textbackslash ref, \hyperpage{10}
+  \item \textbackslash renewcommand, \hyperpage{25}
+  \item \textbackslash right, \hyperpage{12}
+  \item \textbackslash rightmark, \hyperpage{20}
+  \item \textbackslash roman, Roman, \hyperpage{19}
+  \item \textbackslash tikzangle, \hyperpage{32}
+  \item \textbackslash titlesetup, \hyperpage{35}
+  \item \textbackslash usepackage, \hyperpage{5}
+  \item \textbackslash verb, \hyperpage{7}
+  \item 3D, \hyperpage{23}
+
+  \indexspace
+
+  \item babel, \hyperpage{20}
+  \item Beamer, \hyperpage{24}
+
+  \indexspace
+
+  \item Cabeceras, \hyperpage{20}
+  \item commandsampler.py, \hyperpage{32}
+  \item Cosas guays LaTeX, \hyperpage{28}
+  \item Cursiva, \hyperpage{7}
+  \item cwlcreator.py, \hyperpage{29}
+
+  \indexspace
+
+  \item fancyhdr, \hyperpage{20}
+  \item fancyref, \hyperpage{19}, \hyperpage{32}
+  \item fancysprefs, \hyperpage{32}
+  \item fastbuild.sty, \hyperpage{34}
+  \item Fracci\IeC {\'o}n, \hyperpage{11}
+
+  \indexspace
+
+  \item geometry, \hyperpage{18}
+
+  \indexspace
+
+  \item Imagen, \hyperpage{8}
+  \item install, \hyperpage{28}
+
+  \indexspace
+
+  \item latexmk, \hyperpage{24}
+  \item Lista, \hyperpage{8}
+
+  \indexspace
+
+  \item Margen, \hyperpage{18}
+  \item MathUnicode.sty, \hyperpage{32}
+
+  \indexspace
+
+  \item Negrita, \hyperpage{7}
+  \item nobuilddate, \hyperpage{35}
+
+  \indexspace
+
+  \item P\IeC {\'a}rrafo, \hyperpage{6}
+  \item pgfkeys, \hyperpage{25}
+  \item pgfplots, \hyperpage{23}
+  \item Pie de p\IeC {\'a}gina, \hyperpage{20}
+  \item problem, \hyperpage{31}
+  \item problemS, \hyperpage{31}
+
+  \indexspace
+
+  \item Ra\IeC {\'\i }z, \hyperpage{11}
+
+  \indexspace
+
+  \item Secci\IeC {\'o}n, \hyperpage{6}
+  \item shortheader, \hyperpage{34}
+
+  \indexspace
+
+  \item Tabla, \hyperpage{9}
+    \subitem de contenidos, \hyperpage{6}
+  \item texdoc, \hyperpage{17}
+  \item TeXStudio, \hyperpage{4}
+  \item Tikz, \hyperpage{20}
+  \item tikz-3dplot, \hyperpage{23}
+  \item tikztools.sty, \hyperpage{32}
+  \item tocdepth, \hyperpage{18}
+
+  \indexspace
+
+  \item xargs, \hyperpage{25}
+
+\end{theindex}

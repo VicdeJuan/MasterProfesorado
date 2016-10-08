@@ -1,0 +1,83 @@
+\indexentry{TeXStudio|hyperpage}{4}
+\indexentry{\textbackslash usepackage|hyperpage}{5}
+\indexentry{\textbackslash documentclass|hyperpage}{5}
+\indexentry{Tabla!de contenidos|hyperpage}{6}
+\indexentry{Secci\IeC {\'o}n|hyperpage}{6}
+\indexentry{\textbackslash chapter|hyperpage}{6}
+\indexentry{P\IeC {\'a}rrafo|hyperpage}{6}
+\indexentry{Cursiva|hyperpage}{7}
+\indexentry{Negrita|hyperpage}{7}
+\indexentry{\textbackslash begin\{verbatim\}|hyperpage}{7}
+\indexentry{\textbackslash verb|hyperpage}{7}
+\indexentry{Lista|hyperpage}{8}
+\indexentry{Imagen|hyperpage}{8}
+\indexentry{\textbackslash includegraphics|hyperpage}{8}
+\indexentry{\textbackslash begin\{figure\}|hyperpage}{8}
+\indexentry{\textbackslash caption|hyperpage}{9}
+\indexentry{\textbackslash label|hyperpage}{9}
+\indexentry{Tabla|hyperpage}{9}
+\indexentry{\textbackslash begin\{tabular\}|hyperpage}{9}
+\indexentry{\textbackslash hline|hyperpage}{9}
+\indexentry{\textbackslash footnote|hyperpage}{10}
+\indexentry{\textbackslash footnotemark|hyperpage}{10}
+\indexentry{\textbackslash footnotetext|hyperpage}{10}
+\indexentry{\textbackslash label|hyperpage}{10}
+\indexentry{\textbackslash ref|hyperpage}{10}
+\indexentry{Fracci\IeC {\'o}n|hyperpage}{11}
+\indexentry{Ra\IeC {\'\i }z|hyperpage}{11}
+\indexentry{\textbackslash left|hyperpage}{12}
+\indexentry{\textbackslash right|hyperpage}{12}
+\indexentry{-shell-escape|hyperpage}{14}
+\indexentry{\textbackslash displaystyle|hyperpage}{15}
+\indexentry{texdoc|hyperpage}{17}
+\indexentry{geometry|hyperpage}{18}
+\indexentry{Margen|hyperpage}{18}
+\indexentry{\textbackslash input|hyperpage}{18}
+\indexentry{tocdepth|hyperpage}{18}
+\indexentry{\textbackslash arabic|hyperpage}{19}
+\indexentry{\textbackslash alph, Alph|hyperpage}{19}
+\indexentry{\textbackslash roman, Roman|hyperpage}{19}
+\indexentry{fancyref|hyperpage}{19}
+\indexentry{\textbackslash fref|hyperpage}{19}
+\indexentry{fancyhdr|hyperpage}{20}
+\indexentry{Cabeceras|hyperpage}{20}
+\indexentry{Pie de p\IeC {\'a}gina|hyperpage}{20}
+\indexentry{\textbackslash leftmark|hyperpage}{20}
+\indexentry{\textbackslash rightmark|hyperpage}{20}
+\indexentry{Tikz|hyperpage}{20}
+\indexentry{\textbackslash begin\{tikzpicture\}|hyperpage}{20}
+\indexentry{babel|hyperpage}{20}
+\indexentry{pgfplots|hyperpage}{23}
+\indexentry{tikz-3dplot|hyperpage}{23}
+\indexentry{3D|hyperpage}{23}
+\indexentry{latexmk|hyperpage}{24}
+\indexentry{Beamer|hyperpage}{24}
+\indexentry{\textbackslash newcommand|hyperpage}{25}
+\indexentry{\textbackslash newenvironment|hyperpage}{25}
+\indexentry{\textbackslash renewcommand|hyperpage}{25}
+\indexentry{xargs|hyperpage}{25}
+\indexentry{\textbackslash newcommandx|hyperpage}{25}
+\indexentry{\textbackslash newenvironmentx|hyperpage}{25}
+\indexentry{pgfkeys|hyperpage}{25}
+\indexentry{\textbackslash def|hyperpage}{25}
+\indexentry{\textbackslash let|hyperpage}{25}
+\indexentry{\textbackslash newif|hyperpage}{26}
+\indexentry{install|hyperpage}{28}
+\indexentry{Cosas guays LaTeX|hyperpage}{28}
+\indexentry{cwlcreator.py|hyperpage}{29}
+\indexentry{problem|hyperpage}{31}
+\indexentry{problemS|hyperpage}{31}
+\indexentry{commandsampler.py|hyperpage}{32}
+\indexentry{fancyref|hyperpage}{32}
+\indexentry{fancysprefs|hyperpage}{32}
+\indexentry{\textbackslash nref|hyperpage}{32}
+\indexentry{\textbackslash nrefl|hyperpage}{32}
+\indexentry{MathUnicode.sty|hyperpage}{32}
+\indexentry{tikztools.sty|hyperpage}{32}
+\indexentry{\textbackslash curvefam|hyperpage}{32}
+\indexentry{\textbackslash tikzangle|hyperpage}{32}
+\indexentry{fastbuild.sty|hyperpage}{34}
+\indexentry{-shell-escape|hyperpage}{34}
+\indexentry{shortheader|hyperpage}{34}
+\indexentry{nobuilddate|hyperpage}{35}
+\indexentry{\textbackslash titlesetup|hyperpage}{35}

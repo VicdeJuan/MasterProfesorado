@@ -1,0 +1,66 @@
+\select@language {spanish}
+\select@language {spanish}
+\contentsline {chapter}{\numberline {I}Una introducci\IeC {\'o}n a \textlatin {\LaTeX }}{3}{chapter.1}
+\contentsline {section}{\numberline {I.1}Hola Mundo: Primer documento con \textlatin {\LaTeX }}{4}{section.1.1}
+\contentsline {subsection}{\numberline {I.1.1}Instalando un entorno \textlatin {\LaTeX }}{4}{subsection.1.1.1}
+\contentsline {subsection}{\numberline {I.1.2}Un primer documento}{4}{subsection.1.1.2}
+\contentsline {section}{\numberline {I.2}Formato y maquetaci\IeC {\'o}n}{6}{section.1.2}
+\contentsline {subsection}{\numberline {I.2.1}Dando estructura: secciones, subsecciones, p\IeC {\'a}rrafos y m\IeC {\'a}s}{6}{subsection.1.2.1}
+\contentsline {subsection}{\numberline {I.2.2}Dando formato: negritas, cursivas y dem\IeC {\'a}s tipo de letra}{7}{subsection.1.2.2}
+\contentsline {subsection}{\numberline {I.2.3}Entornos menos b\IeC {\'a}sicos: listas, tablas, im\IeC {\'a}genes y m\IeC {\'a}s}{8}{subsection.1.2.3}
+\contentsline {subsubsection}{\numberline {I.2.3.1}Listas}{8}{subsubsection.1.2.3.1}
+\contentsline {subsubsection}{\numberline {I.2.3.2}Im\IeC {\'a}genes}{8}{subsubsection.1.2.3.2}
+\contentsline {subsubsection}{\numberline {I.2.3.3}Tablas}{9}{subsubsection.1.2.3.3}
+\contentsline {subsubsection}{\numberline {I.2.3.4}Notas al pie}{10}{subsubsection.1.2.3.4}
+\contentsline {subsubsection}{\numberline {I.2.3.5}Etiquetas y referencias}{10}{subsubsection.1.2.3.5}
+\contentsline {section}{\numberline {I.3}Matem\IeC {\'a}ticas en \textlatin {\LaTeX }}{11}{section.1.3}
+\contentsline {subsection}{\numberline {I.3.1}Sub\IeC {\'\i }ndices y super\IeC {\'\i }ndices, fracciones y ra\IeC {\'\i }ces}{11}{subsection.1.3.1}
+\contentsline {subsection}{\numberline {I.3.2}Matrices}{12}{subsection.1.3.2}
+\contentsline {subsection}{\numberline {I.3.3}Delimitadores}{12}{subsection.1.3.3}
+\contentsline {subsection}{\numberline {I.3.4}S\IeC {\'\i }mbolos, operadores y texto}{12}{subsection.1.3.4}
+\contentsline {subsection}{\numberline {I.3.5}Caracteres en otras fuentes}{13}{subsection.1.3.5}
+\contentsline {subsection}{\numberline {I.3.6}Entornos matem\IeC {\'a}ticos}{13}{subsection.1.3.6}
+\contentsline {section}{\numberline {I.4}Preguntas frecuentes}{14}{section.1.4}
+\contentsline {paragraph}{Mi documento no compila y \textlatin {\LaTeX }\ no me dice por qu\IeC {\'e}: \IeC {\textquestiondown }qu\IeC {\'e} hago?}{14}{section*.2}
+\contentsline {paragraph}{Los operadores matem\IeC {\'a}ticos est\IeC {\'a}n muy juntos}{15}{section*.3}
+\contentsline {paragraph}{Los sub\IeC {\'\i }ndices me salen peque\IeC {\~n}os cuando uso el modo \textit {inline}}{15}{section*.4}
+\contentsline {chapter}{\numberline {II}\textlatin {\LaTeX }\ avanzado}{16}{chapter.2}
+\contentsline {section}{\numberline {II.1}\IeC {\textquestiondown }C\IeC {\'o}mo funciona \textlatin {\LaTeX }?}{16}{section.2.1}
+\contentsline {paragraph}{\IeC {\textquestiondown }Esto es importante?}{17}{section*.5}
+\contentsline {section}{\numberline {II.2}\textlatin {\LaTeX }\ para usuarios avanzados}{17}{section.2.2}
+\contentsline {subsection}{\numberline {II.2.1}\IeC {\textquestiondown }D\IeC {\'o}nde est\IeC {\'a}n documentados los paquetes?}{17}{subsection.2.2.1}
+\contentsline {subsection}{\numberline {II.2.2}Cambiando los m\IeC {\'a}rgenes del documento}{18}{subsection.2.2.2}
+\contentsline {subsection}{\numberline {II.2.3}Manejando documentos grandes con varios archivos}{18}{subsection.2.2.3}
+\contentsline {subsection}{\numberline {II.2.4}C\IeC {\'o}mo personalizar la tabla de contenidos y la numeraci\IeC {\'o}n de secciones}{18}{subsection.2.2.4}
+\contentsline {subsection}{\numberline {II.2.5}Referencias todav\IeC {\'\i }a m\IeC {\'a}s autom\IeC {\'a}ticas: fancyref}{19}{subsection.2.2.5}
+\contentsline {subsection}{\numberline {II.2.6}Estilos de p\IeC {\'a}gina: pies y cabeceras}{20}{subsection.2.2.6}
+\contentsline {subsection}{\numberline {II.2.7}Dibujos y gr\IeC {\'a}ficas de funciones con c\IeC {\'o}digo \textlatin {\LaTeX }: Tikz}{20}{subsection.2.2.7}
+\contentsline {subsection}{\numberline {II.2.8}Un compilador m\IeC {\'a}s completo: latexmk}{24}{subsection.2.2.8}
+\contentsline {subsection}{\numberline {II.2.9}Beamer: presentaciones con \textlatin {\LaTeX }\ (o c\IeC {\'o}mo dije adi\IeC {\'o}s a Powerpoint)}{24}{subsection.2.2.9}
+\contentsline {section}{\numberline {II.3}Ampliando \textlatin {\LaTeX }: Desarrollo de comandos, entornos, paquetes y clases}{24}{section.2.3}
+\contentsline {subsection}{\numberline {II.3.1}Comandos y entornos}{24}{subsection.2.3.1}
+\contentsline {subsubsection}{\numberline {II.3.1.1}Manejo avanzado de argumentos}{25}{subsubsection.2.3.1.1}
+\contentsline {subsubsection}{\numberline {II.3.1.2}Comandos de bajo nivel \textlatin {T\kern -.1667em\lower .5ex\hbox {E}\kern -.125emX\spacefactor \@m }\ y expansi\IeC {\'o}n de argumentos}{25}{subsubsection.2.3.1.2}
+\contentsline {subsection}{\numberline {II.3.2}Paquetes y clases}{26}{subsection.2.3.2}
+\contentsline {subsection}{\numberline {II.3.3}Paquetes auxiliares para el desarrollo}{26}{subsection.2.3.3}
+\contentsline {chapter}{\numberline {III}Manual paquetes extendidos}{28}{chapter.3}
+\contentsline {section}{\numberline {III.1}Introducci\IeC {\'o}n: \IeC {\textquestiondown }qu\IeC {\'e} podemos hacer con los paquetes extendidos?}{28}{section.3.1}
+\contentsline {section}{\numberline {III.2}Estructura de los paquetes extendidos}{28}{section.3.2}
+\contentsline {section}{\numberline {III.3}Documentaci\IeC {\'o}n de los paquetes}{29}{section.3.3}
+\contentsline {subsection}{\numberline {III.3.1}\textit {exmath.sty}: Comandos y entornos adicionales de matem\IeC {\'a}ticas}{29}{subsection.3.3.1}
+\contentsline {subsubsection}{\numberline {III.3.1.1}Entornos para teoremas y similares}{29}{subsubsection.3.3.1.1}
+\contentsline {subsubsection}{\numberline {III.3.1.2}Definiciones y conceptos}{30}{subsubsection.3.3.1.2}
+\contentsline {subsubsection}{\numberline {III.3.1.3}Ejercicios}{30}{subsubsection.3.3.1.3}
+\contentsline {paragraph}{Ejemplo: Titulo}{30}{section*.7}
+\contentsline {subsubsection}{\numberline {III.3.1.4}Im\IeC {\'a}genes}{31}{subsubsection.3.3.1.4}
+\contentsline {subsubsection}{\numberline {III.3.1.5}Comandos adicionales}{32}{subsubsection.3.3.1.5}
+\contentsline {subsection}{\numberline {III.3.2}\textit {fancysprefs.sty}: Referencias mejoradas}{32}{subsection.3.3.2}
+\contentsline {subsection}{\numberline {III.3.3}\textit {MathUnicode.sty}: Letras griegas directamente desde el teclado}{32}{subsection.3.3.3}
+\contentsline {subsection}{\numberline {III.3.4}\textit {tikztools.sty}: Herramientas y comandos extra para Tikz}{32}{subsection.3.3.4}
+\contentsline {subsection}{\numberline {III.3.5}\textit {fastbuild.sty}: Recortando los tiempos de compilaci\IeC {\'o}n}{34}{subsection.3.3.5}
+\contentsline {subsection}{\numberline {III.3.6}\textit {apuntes.cls}: La base para crear documentos de apuntes}{34}{subsection.3.3.6}
+\contentsline {subsubsection}{\numberline {III.3.6.1}Cabecera de p\IeC {\'a}ginas}{34}{subsubsection.3.3.6.1}
+\contentsline {subsubsection}{\numberline {III.3.6.2}Portada}{34}{subsubsection.3.3.6.2}
+\contentsline {subsection}{\numberline {III.3.7}\textit {ejercicios.cls}: documentos simples y entrega de ejercicios}{35}{subsection.3.3.7}
+\contentsline {chapter}{\numberline {A}Comandos}{36}{appendix.Alph1}
+\contentsline {chapter}{\'{I}ndice alfab\'{e}tico}{40}{section*.8}
