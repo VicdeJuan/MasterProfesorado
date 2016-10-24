@@ -142,9 +142,9 @@
 			\begin{flushright}
 				\footnotesize
 				Apuntes URJC \par
-				Master Profesorado Info \par
+				Master Profesorado Matemáticas \par
 				\vspace{5pt}
-				\href{http://github.com/VicdeJuan/Apuntes}{Código en Github}
+				\href{http://github.com/VicdeJuan/MasterProfesorado}{Código en Github}
 			\end{flushright}
 		\end{minipage}
 	\fi
