@@ -6,6 +6,7 @@
 
 
 \def\citeapos#1{\citetitle{#1} (\citeauthor{#1}, \citeyear{#1}) \cite{#1}}
+%\newcommand{\citeapos}[1]{\citetitle{#1} (\citeauthor{#1}, \citeyear{#1}) \cite{#1}}
 
 % Paquetes adicionales
 
@@ -74,7 +75,7 @@ En esta investigación tratamos de aportar una metodología (y la evidencia sobr
 %
 Debido al enfoque multidisciplinar de la metodología, estudiaremos también los beneficios producidos en las otras disciplinas.
 
-El estudio \citeapos{Interdiscipline} realiza una experiencia parecida en E.E.U.U. Sin embargo, pretendemos completar esa investigación en dos sentidos: 
+El estudio \cite{Interdiscipline} \citeapos{Interdiscipline} realiza una experiencia parecida en E.E.U.U. Sin embargo, pretendemos completar esa investigación en dos sentidos: 
 \begin{itemize}
 	\item Realizar un estudio similar en un sistema educativo muy diferente, como es el Sistema Educativo Español. 
 	%
@@ -94,7 +95,7 @@ Determinar (justificadamente) si la metodología que emplearíamos sería cuanti
 	\item Dilucidar si el desarrollo por parte de los alumnos de un programa de preguntas y respuestas sobre el temario de otras asignaturas (como fechas de Historia, vocabulario de Inglés, aritmética básica o compleja) supone una mejora en el rendimiento en la asignatura sobre la que verse el programa desarrollado.
 	%
 	\subitem En una primera investigación, se intentará que cada estudiante programe sobre la asignatura que más le interese (entre unas previamente seleccionadas).
-	\item Cómo mejora la autoeficacia en la programación (utilizando \cite{CPSES}) gracias a haber estado desarrollando un programa con una utilidad directa.
+	\item Cómo mejora la autoeficacia en la programación (utilizando \citetitle{CPSES} \cite{CPSES}) gracias a haber estado desarrollando un programa con una utilidad directa.
 	\item Seleccionar un grupo de estudiantes de 1 de Bachillerato en un instituto donde se imparta Informática. 
 	%
 	El grupo será del bachillerato de ciencias, dado que el currículo de Informática de 1 de Bachillerato Tecnológico incluye la programación.
@@ -103,7 +104,7 @@ Determinar (justificadamente) si la metodología que emplearíamos sería cuanti
 
 La metodología empleada sería puramente cuantitativa. 
 %
-Primero las competencias informáticas con la escala \cite{CPSES}, antes del experimento y después, con un grupo de control para comprobar si la mejora producida es significativa mediante un contraste de hipótesis estadístico.
+Primero las competencias informáticas con la escala \citetitle{CPSES} \cite{CPSES}, antes del experimento y después, con un grupo de control para comprobar si la mejora producida es significativa mediante un contraste de hipótesis estadístico.
 %
 Por otro lado, la misma comparativa con las otras asignaturas, con un cuestionario pre-experimento y otro post-experimento, con los que evaluar los conocimientos adquiridos.
 
@@ -122,14 +123,18 @@ A la hora de que los alumnos adquieran esas destrezas es imprescindible analizar
 %
 En este sentido, \cite{StudentCenter} demuestra que la \concept{autoeficacia} (utilizando la escala \citetitle{CPSES},\cite{CPSES}) en \textit{Computer Science} aumenta significativamente cuando la metodología empleada es a base de problemas y tareas, siendo el docente una mera referencia a la que consultar las dudas que puedan surgir.
 %
+\label{studentbased}
+%
 Por otro lado, \cite{StudentCenterVSLectures} llega una conclusión parecida. 
 %
 La docencia basada en explicaciones del docente (\textit{Teacher based}) da lugar a una mejora en la autoeficacia peor que la mejora obtenida con una metodología centrada en el estudiante.
 %
+\label{groupsbased}
+%
 Otra investigación \cite{ABPCS} evidencia que en el ámbito de la programación también se aumentan las destrezas adquiridas trabajando en grupo sobre problemas y proyectos que los estudiantes encuentren interesantes y entretenidos. 
 
 
-Por otro lado, Mitch Resnick, el investigador que desarrolló \citeapos{scratch}, describe la programación como un medio por el que aprender y comprender.
+Por otro lado, Mitch Resnick, el investigador que desarrolló \concept{Scratch}\cite{scratch}, describe la programación como un medio por el que aprender y comprender.
 %
 Esta herramienta se desarrolló para que los alumnos de primeros cursos de primaria pudieran acercarse a la programación y esto les ayudara con el \textit{enfoque procedimental} necesario en la programación.
 %
@@ -143,6 +148,44 @@ El objeto de esta investigación es ampliar la idea de Resnick a la educación s
 ¿De qué manera la resolución de problemas informáticos (de programación) puede ayudar a mejorar el rendimiento en otras asignaturas que, a priori, no tienen relación como pueda ser la Historia o el Inglés?
 %
 Y ¿de qué manera, la modificación de la metodología de enseñanza de la programación en secundaria para enfocarla a mejorar el rendimiento en otras asignaturas redunda en una mejora significativa del aprendizaje de la programación?
+
+
+\textbf{Recogida de datos: } Definiremos 
+\begin{itemize}
+	\item \textbf{Variable independiente:} Metodología impartida en la clase de Informática.
+	\item \textbf{Variable dependiente:} Rendimiento en otra disciplina (Química Orgánica, Química Inorgánica, Historia o Inglés).
+	\subitem Técnicamente se realizarán \mathtt{n} experimentos con las \mathtt{n} asignaturas elegidas por más de 5 estudiantes.
+	\item \textbf{Grupos:}
+	\subitem Dividiremos el grupo de Informática en 2. A los que aplicaremos la  metodología propuesta (grupo experimental) y a los que no (grupo control).
+	%
+	Los alumnos que vayan a recibir la metodología nueva escogerán una de las siguientes materias: Química Orgánica, Química Inorgánica, Historia o Inglés.
+	\subitem Además, para poder realizar un análisis estadístico más profundo, tomaremos como referencia los alumnos del Bachillerato Tecnológico que no cursen Informática.
+	%
+	Así podremos contrarrestar el efecto de variables extrañas que afecten a todos por igual, como puede ser un cambio de profesor, avanzar el curso y en el temario, por lo que los alumnos cada vez habrán adquirido más destrezas...
+\end{itemize}
+
+
+
+La primera recogida de datos serán 2 cuestionarios a los 3 grupos definidos.
+%
+El primer cuestionario será uno de conocimientos sobre la materia elegida por el grupo experimental.
+%
+El segundo cuestionario será para evaluar la autoeficacia en Informática (según \citetitle{CPSES} \cite{CPSES}}.
+
+Después, a los alumnos del grupo experimental se les propondrá que hagan, por grupos (como ya hemos sugerido \ref{groupsbased}), un programa para evaluar sus conocimientos sobre la materia escogida.
+%
+El funcionamiento de la clase será \textit{basado en el estudiante} ya que, como hemos mencionado anteriormente (\ref{studentbased}), es una metodología más efectiva que la \textit{basada en el docente}.
+%
+Mientras el grupo experimental ha recibido esta propuesta, el grupo control recibirá las instrucciones que el docente considere oportunas para desarrollar un software similar (como podría ser el de un cajero automático).
+
+Una vez finalizado el tiempo (especificado en el siguiente punto \ref{tiempos}), se volverán a pasar los 2 cuestionarios a los 3 grupos.
+
+\textbf{Temporalización:}
+\label{tiempos}
+Un programa muy sencillo de preguntas y respuestas ha sido desarrollado para esta investigación a modo de ejemplo en aproximadamente media hora.
+%
+Esperamos que los alumnos sean capaces de aprender los rudimentos de la programación como para hacer un software con las caracterísitcas deseadas en tres semanas.
+
 
 
 \section{Entrega Final}
