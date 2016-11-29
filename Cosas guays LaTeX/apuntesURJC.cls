@@ -7,6 +7,8 @@
 \newif\if@apuntestitlepage
 \newif\if@shortheader
 \@shortheaderfalse
+\newif\if@miniheader
+\@miniheaderfalse
 \newcommand{\organization}{URJC}
 
 \DeclareOption{nobuilddate}{%
@@ -25,6 +27,9 @@
 	\PassOptionsToClass{\CurrentOption}{custombase}
 }
 
+\DeclareOption{miniheader}{
+	\@miniheadertrue
+}
 \DeclareOption{shortheader}{
 	\@shortheadertrue
 }
@@ -170,6 +175,18 @@
 		}
 	\fi
 	\rhead{\small \theauthor}
+	\cfoot{\thepage\ de \pageref{LastPage}}
+	\rfoot{\compdate}
+}
+\fancypagestyle{plain}{%
+	\if@miniheader
+		\lhead{\small \itshape \thetitle}
+	\else
+		\lhead{%
+			\small \itshape \thetitle\, -\, \thedate\,%
+			\ifthenelse{\equal{\organization}{}}{}{ -\, \organization}%
+		}
+	\fi
 	\cfoot{\thepage\ de \pageref{LastPage}}
 	\rfoot{\compdate}
 }
