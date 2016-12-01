@@ -4,7 +4,11 @@
 \author{Víctor de Juan Sanz}
 \date{16/17 C1}
 
+\usepackage[acronym]{glossaries} 		% Glosario/Acrónimos
 
+\makeglossaries
+\newacronym{CPSES}{CPSES}{Computer Programming Self-Efficacy Scale}
+\newcommand{\CPSES}{\textit{\gls{CPSES}} \cite{CPSES}}
 
 
 \def\citeapos#1{\citetitle{#1} (\citeauthor{#1}, \citeyear{#1}) \cite{#1}}
@@ -79,7 +83,7 @@ El estudio \textit{The Impact of an Interdisciplinary Space Program on Computer 
 
 Los objetivos de esta investigación son:
 \begin{itemize}
-	\item Cómo mejora la autoeficacia \footnote{la definición se encuentra en \ref{defn::autoeficacia}} en la programación (utilizando \citetitle{CPSES}  \cite{CPSES}) gracias a haber estado desarrollando un programa con una utilidad directa.
+	\item Cómo mejora la autoeficacia\footnote{la definición se encuentra en \ref{defn::autoeficacia}} en la programación (utilizando \CPSES) gracias a haber estado desarrollando un programa con una utilidad directa.
 	
 	\begin{defn}[Autoeficacia]
 	\label{defn::autoeficacia}
@@ -106,7 +110,7 @@ Numerosas investigaciones (\cite{CSIsImportant},\cite{CSArguing} entre otras) ev
 %
 A la hora de que los alumnos adquieran esas destrezas es imprescindible analizar cuál es la mejor metodología para que los estudiantes las adquieran.
 %
-En este sentido, \cite{StudentCenter} demuestra que la \concept{autoeficacia} (utilizando la escala \citetitle{CPSES},\cite{CPSES}) en \textit{Computer Science} aumenta significativamente cuando la metodología empleada es a base de problemas y tareas, siendo el docente una mera referencia a la que consultar las dudas que puedan surgir.
+En este sentido, \cite{StudentCenter} demuestra que la \concept{autoeficacia} (utilizando la escala \CPSES) en \textit{Computer Science} aumenta significativamente cuando la metodología empleada es a base de problemas y tareas, siendo el docente una mera referencia a la que consultar las dudas que puedan surgir.
 %
 \label{studentbased}
 %
@@ -165,7 +169,7 @@ La primera recogida de datos serán 2 cuestionarios a los 3 grupos definidos.
 %
 El primer cuestionario será uno de conocimientos sobre la materia elegida por el grupo experimental.
 %
-El segundo cuestionario será para evaluar la autoeficacia en Informática (según \citetitle{CPSES} \cite{CPSES}).
+El segundo cuestionario será para evaluar la autoeficacia en Informática (según \CPSES).
 
 Después, a los alumnos del grupo experimental se les propondrá que hagan, por grupos (como ya hemos sugerido \ref{groupsbased}), un programa para evaluar sus conocimientos sobre la materia escogida.
 %
@@ -223,7 +227,7 @@ Utilizando el grupo de \textit{contrarresto}, procederíamos a realizar diversos
 
 Sea $µ_B$ la media del grupo \textit{contrarresto} (base), $µ_C$ la media del grupo control y $µ_E$ la media del grupo experimental.
 %
-Consideramos las 3 medias en el cuestionario \citetitle{CPSES}.
+Consideramos las 3 medias en el cuestionario \CPSES.
 
 Ahora, procederíamos a contrastar la hipótesis nula $H_0: (µ_C - µ_B) < (µ_E - µ_B)$.
 
