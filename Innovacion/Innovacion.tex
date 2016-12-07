@@ -1,10 +1,56 @@
-\documentclass[palatino,nochap]{apuntesURJC}
+\documentclass[palatino,nochap,miniheader]{apuntesURJC}
 
-\title{Innovacion}
-\author{Víctor de Juan}
+\usepackage{soul}
+
+\title{\textsc{Innovación educativa y TICS aplicadas a la enseñanza de las Matemáticas}}
+\author{Víctor de Juan,
+Pedro de la Mata Gómez,
+Virginia Vadillo Lacasa,
+Gustavo Adolfo Martínez Risque}
 \date{16/17 C1}
 
+
+\renewenvironment{leftbar}[2][\hsize]
+{
+    \def\FrameCommand
+    {
+        {\color{#2}\vrule width 3pt}
+        \hspace{0pt}
+    }
+    \MakeFramed{\hsize#1\advance\hsize-\width\FrameRestore}
+}
+{\endMakeFramed}
+
+
+%%% A COLOR:
+\newcommand{\guscolor}{OliveGreen}
+\newcommand{\virgicolor}{Goldenrod}
+\newcommand{\pedrocolor}{NavyBlue}
+\newcommand{\victorcolor}{Bittersweet}
+
+
+% EN blanco y negro
+
+%\newcommand{\guscolor}{black!90!white}
+%\newcommand{\virgicolor}{black!70!white}
+%\newcommand{\pedrocolor}{black!40!white}
+%\newcommand{\victorcolor}{black!15!white}
+
+
+
+%\newenvironment{opin}[2]{
+%   \textcolor{#1}{\textbf{Aportación de #2:}}
+%   \begin{leftbar}{#1}
+%}{\end{leftbar}}
 % Paquetes adicionales
+
+
+\newenvironment{opin}[2]{
+\setulcolor{#1}
+   \textbf{\textcolor{#1}{\underline{\textcolor{black}{Aportación de #2:}}}}
+   \begin{leftbar}{#1}
+}{\end{leftbar}}
+
 
 % --------------------
 
@@ -16,7 +62,46 @@
 \newpage
 % Contenido.
 
-\section{Portafolios}
+\chapter{Portafolios}
+
+Para distinguir correctamente durante el portafolios a quién pertenece la aportación, hay una barra de color a la izquierda del texto, siguiendo la siguiente leyenda:
+
+\begin{table}[h!]
+\centering
+\begin{tabular}{|c|c|}
+\hline
+Gustavo & \colorbox{\guscolor}{--------------------}\\
+Virginia & \colorbox{\virgicolor}{--------------------}\\
+Pedro & \colorbox{\pedrocolor}{--------------------}\\
+Víctor & \colorbox{\victorcolor}{--------------------}\\\hline
+\end{tabular}
+\end{table}
+
+\section{Estructura básica}
+
+\subsection{Innovación en Educación (Tema 1 - 10/10/2016)}
+\input{tex/10102016}
+
+\subsection{Introducción a la Neurodidáctica (Tema 2.1 - 17/10/2016)}
+\input{tex/17102016}
+
+\subsection{Introducción a la Neurodidáctica (Tema 2.2 - 24/10/2016)}
+\input{tex/24102016}
+
+\subsection{Innovación y recursos educativos (Tema 3.1 - 24/10/2016)}
+\input{tex/24102016_2}
+
+\subsection{Clase cancelada (31/10/2016)}
+
+\subsection{Pizarras digitales (Tema 4 - 07/11/2016)}
+\input{tex/07112016}
+
+\subsection{Innovación y recursos educativos (Tema 3.2 - 14/11/2016)}
+\input{tex/14112016}
+
+
+\chapter{Víctor de Juan}
+
 
 \paragraph{Primera entrada del portafolio: ¿Qué es innovar en educación?}
 
@@ -96,7 +181,7 @@ La cantidad de tiempo invertido en filtrar
 
 
 
-\section{Ideas interesantes}
+\subsection{Ideas interesantes}
 
 \begin{itemize}
 	\item ¿Porqué no, hablar todos los años de quién ha ganado la medalla Fields?
@@ -104,15 +189,19 @@ La cantidad de tiempo invertido en filtrar
 
 
 
+\chapter{Trabajo de Innovación educativa}
 
+
+\chapter{Valoración de otros trabajos}
+\section{Grupo 1 - Cluedo matemático (21/11/2016)}
+\section{Grupo 2 - Construyendo las matemáticas (21/11/2016)}
 
 
 
 %% Apendices (ejercicios, examenes)
 \appendix
 
-\chapter{---}
-\input{tex/Innovacion_Ejs.tex}
+%\chapter{---}\input{tex/Innovacion_Ejs.tex}
 
 \printindex
 \end{document}
