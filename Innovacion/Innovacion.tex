@@ -2,6 +2,8 @@
 
 \usepackage{soul}
 \usepackage{exmath}
+\usepackage{wrapfig}
+
 
 
 \title{\textsc{Innovación educativa y TICS aplicadas a la enseñanza de las Matemáticas}}
@@ -54,6 +56,23 @@ Gustavo Adolfo Martínez Risque}
    \begin{leftbar}{#1}
 }{\end{leftbar}}
 
+\newcommand{\addimg}[5]{
+\vspace{2cm}
+\end{leftbar}
+\vspace{-2cm}
+\begin{figure}[hbtp]
+\begin{leftbar}{#1}
+\vspace{1cm}
+\centering
+\includegraphics[#2]{#3}
+\caption{#4}
+\label{#5}
+\vspace{2cm}
+\end{leftbar}
+\end{figure}
+\vspace{-2cm}
+\begin{leftbar}{#1}
+}
 
 
 
