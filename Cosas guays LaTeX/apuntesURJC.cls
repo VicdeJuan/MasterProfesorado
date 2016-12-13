@@ -79,7 +79,10 @@
 }
 
 \def\and{\!,\ }
+
 \renewcommand{\author}[1]{\def\theauthor{#1}}
+
+\newcommand{\subtitle}[1]{\def\thesubtitle{#1}}
 
 \newif\if@showsignature
 
@@ -116,6 +119,11 @@
 	\noindent\makebox[\linewidth]{\color{titlepagecolor}\rule{1.1\paperwidth}{2pt}}\par
 	\vspace{60pt} % Margen hasta el abstract
 	\noindent
+	\textcolor{titlepagecolor}{%
+		\begin{hyphenrules}{nohyphenation}%
+		\Large{\textbf{\fontfamily{lmss}\selectfont{\thesubtitle}}}%
+		\end{hyphenrules}%
+	}
 	\if@abstractset % Escribimos el abstract sólo si el usuario lo ha escrito.
 		\begin{minipage}{0.6\linewidth}
 			\setlength{\parskip}{5pt}
@@ -149,7 +157,7 @@
 				Apuntes URJC \par
 				Master Profesorado Matemáticas \par
 				\vspace{5pt}
-				\href{http://github.com/VicdeJuan/MasterProfesorado}{Código en Github}
+				%\href{http://github.com/VicdeJuan/MasterProfesorado}{Código en Github}
 			\end{flushright}
 		\end{minipage}
 	\fi
