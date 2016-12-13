@@ -1,12 +1,25 @@
-\documentclass[palatino,nochap,miniheader]{apuntesURJC}
+\documentclass[palatino,nochap,miniheader,nobuilddate]{apuntesURJC}
 
 \usepackage{soul}
 \usepackage{exmath}
 \usepackage{wrapfig}
 
+%\PassOptionsToPackage{hyphens}{url}\usepackage{hyperref}
+%\g@addto@macro{\UrlBreaks}{\UrlOrds}
+\expandafter\def\expandafter\UrlBreaks\expandafter{\UrlBreaks%  save the current one
+  \do\a\do\b\do\c\do\d\do\e\do\f\do\g\do\h\do\i\do\j%
+  \do\k\do\l\do\m\do\n\do\o\do\p\do\q\do\r\do\s\do\t%
+  \do\u\do\v\do\w\do\x\do\y\do\z\do\A\do\B\do\C\do\D%
+  \do\E\do\F\do\G\do\H\do\I\do\J\do\K\do\L\do\M\do\N%
+  \do\O\do\P\do\Q\do\R\do\S\do\T\do\U\do\V\do\W\do\X%
+  \do\Y\do\Z}
 
 
 \title{\textsc{Innovación educativa y TICS aplicadas a la enseñanza de las Matemáticas}}
+
+\subtitle{Portafolios del Grupo 3, con la profesora Raquel Garrido.}
+
+
 \author{Víctor de Juan,
 Pedro de la Mata Gómez,
 Virginia Vadillo Lacasa,
@@ -80,59 +93,22 @@ Gustavo Adolfo Martínez Risque}
 
 \begin{document}
 \pagestyle{plain}
+
+
+
 \maketitle
 
 \tableofcontents
 \newpage
 % Contenido.
 
-\chapter{Portafolios}
+\chapter{Contenidos generales}
+\input{chap1}
 
-Para distinguir correctamente durante el portafolios a quién pertenece la aportación, hay una barra de color a la izquierda del texto, siguiendo la siguiente leyenda:
-
-\begin{table}[h!]
-\centering
-\begin{tabular}{|c|c|}
-\hline
-Gustavo & \colorbox{\guscolor}{--------------------}\\
-Virginia & \colorbox{\virgicolor}{--------------------}\\
-Pedro & \colorbox{\pedrocolor}{--------------------}\\
-Víctor & \colorbox{\victorcolor}{--------------------}\\\hline
-\end{tabular}
-\end{table}
-
-\section{Entradas por tema y día}
-
-\subsection{Innovación en Educación (Tema 1 - 10/10/2016)}
-\input{tex/10102016}
-
-\subsection{Introducción a la Neurodidáctica (Tema 2.1 - 17/10/2016)}
-\input{tex/17102016}
-
-\subsection{Introducción a la Neurodidáctica (Tema 2.2 - 24/10/2016)}
-\input{tex/24102016}
-
-\subsection{Innovación y recursos educativos (Tema 3.1 - 24/10/2016)}
-\input{tex/24102016_2}
-
-\subsection{Clase cancelada (31/10/2016)}
-
-\subsection{Pizarras digitales (Tema 4 - 07/11/2016)}
-\input{tex/07112016}
-
-\subsection{Innovación y recursos educativos (Tema 3.2 - 14/11/2016)}
-\input{tex/14112016}
-
-
-\section{Conclusiones de la asignatura}
-\input{tex/conclusiones}
-
-\chapter{Trabajo de Innovación educativa}
-
+\chapter{La indefensión en Matemáticas aplicadas a las CC.SS.}
 \input{tex/Indefension}
 
 \chapter{Valoración de otros trabajos}
-
 \input{tex/valoraciones}
 
 
