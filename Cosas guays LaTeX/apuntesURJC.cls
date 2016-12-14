@@ -82,7 +82,9 @@
 
 \renewcommand{\author}[1]{\def\theauthor{#1}}
 
-\newcommand{\subtitle}[1]{\def\thesubtitle{#1}}
+\newif\if@subset
+\@subsetfalse
+\newcommand{\subtitle}[1]{\def\thesubtitle{#1}\@subsettrue}
 
 \newif\if@showsignature
 
@@ -119,11 +121,17 @@
 	\noindent\makebox[\linewidth]{\color{titlepagecolor}\rule{1.1\paperwidth}{2pt}}\par
 	\vspace{60pt} % Margen hasta el abstract
 	\noindent
+	\if@subset
 	\textcolor{titlepagecolor}{%
 		\begin{hyphenrules}{nohyphenation}%
 		\Large{\textbf{\fontfamily{lmss}\selectfont{\thesubtitle}}}%
 		\end{hyphenrules}%
 	}
+	\par
+	\noindent\makebox[\linewidth]{\color{titlepagecolor}\rule{1.1\paperwidth}{0pt}}\par
+	%\vspace{35pt}%
+	\noindent%
+	\fi
 	\if@abstractset % Escribimos el abstract sólo si el usuario lo ha escrito.
 		\begin{minipage}{0.6\linewidth}
 			\setlength{\parskip}{5pt}
