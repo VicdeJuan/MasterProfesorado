@@ -1,5 +1,6 @@
-\documentclass[palatino,nochap]{apuntesURJC}
+\documentclass[palatino,nochap,nobuilddate]{apuntesURJC}
 
+\usepackage{soul}
 \title{Registros de representación}
 
 \author{Víctor de Juan,
@@ -8,6 +9,9 @@ Virginia Vadillo Lacasa,
 Gustavo Adolfo Martínez Risque}
 
 \date{16/17 C1}
+
+\newcommand{\specialcell}[2][c]{%
+  \begin{tabular}[#1]{@{}c@{}}#2\end{tabular}}
 
 % Paquetes adicionales
 
@@ -25,34 +29,79 @@ Gustavo Adolfo Martínez Risque}
 \centering
 \begin{tabular}{|c|c|}
 \hline
-N grupo & Apellidos, Nombre
+\textbf{N grupo} & \textbf{Apellidos, Nombre}
 \\\hline
-Grupo 3 & Nombres
+Grupo 3 & \begin{tabular}{c}
+de Juan Sanz, Víctor \\\hline
+de la Mata Gómez, Pedro \\\hline
+Vadillo Lacasa, Virginia \\\hline
+Adolfo Martínez Risque, Gustavo
+\end{tabular}
 \\\hline
 \end{tabular}
 \caption{Descripción de los miembros del grupo}
 \end{table}
 
 \section{Introducción}
+
+Utilizando \cite{Bruno},\cite{Duval},\cite{Ismenia},\cite{Oviedo}.
+
 \section{Contextualización}
 
 \section{Unidad didáctica}
 
+En esta unidad didáctica sólo hemos encontrado conversiones entre registros, pero ningún tratamiento. 
+%
+Creemos que es algo natural, ya que las diversas representaciones de una función son únicas, salvo cambios de escala en la representación gráfica (que no aportan información nueva), y salvo que empleemos distintos valores en la tabla en la representación tabular (lo que tampoco aportaría ninguna información relevante). 
+
+A continuación, pasamos a describir detalladamente, concepto por concepto de los tratados en la unidad didáctica, los registros de representación identificados.
+%
+Al final de la descripción detallada, incluimos una tabla resumen.
+
+\subsection{Concepto de función}
+
+En la definición de una función encontramos 2 registros distintos: 
+%
+el \ul{registro natural} al explicar en lenguaje natural el concepto de función y el \ul{registro gr\'afico} para dar una representación gráfica del concepto de función. 
+%
+Esto sería una \textbf{conversión} entre \textit{registros semióticos} de un mismo objeto matemático.
+
 \begin{figure}[hbtp]
-%\includegraphics[scale=0.4]{img/img1.jpg}
+\centering
+\includegraphics[scale=0.4]{img/img1.jpg}
 \caption{\textcolor{red}{Tema 1, arriba a la izquierda} Conversión del registro natural al registro gráfico.}
 \label{img1}
 \end{figure}
 
+\subsection{Funciones dadas por tablas de valores}
+
+
+\begin{figure}[hbtp]
+\centering
+\includegraphics[scale=0.4]{img/img2.jpg}
+\caption{Conversión del registro natural al registro gráfico.}
+\label{img2}
+\end{figure}
+
+\subsection{Proporcionalidad}
+
+\subsection{Pendiente}
+
+\subection{Funciones lineales}
+
+\subsection{Constantes}
+
+}
 \begin{table}[hbtp]
-\begin{tabular}{cccccccc}
-				&icónico & tabular & gráfico & aritmético & natural & página & imagen\\
-Concepto de función & no & no & si & no & si & ??? & \ref{img1}\\
-Funciones dadas por tablas de valores & no & no & si & si & si &235 & \ref{img2}\\
-Proporcionalidad & si & si & si & si & si & ??? & \ref{img3}\\
-Pendiente & no & no & si & si & si & 238 & \ref{img4}\\
-Funciones lineales & si & si & si & si & si & 240 & \ref{img5} \\
-Constantes & si & si & si & si & si & 242 & \ref{img6}\\
+\begin{tabular}{|c||c|c|c|c|c|c|c|}
+\hline 
+			&\textsc{Icónico} &\textsc{Tabular} &\textsc{Gráfico} &\textsc{Aritmético} &\textsc{Natural}  &\textsc{Imagen}\\\hline
+Concepto de función &no   & no & si & no & si  & \ref{img1}\\\hline
+\specialcell[c]{Funciones dadas \\por tablas de valores} & no & no & si & si & si & \ref{img2}\\\hline
+Proporcionalidad & si & si & si & si & si  & \ref{img3}\\\hline
+Pendiente & no & no & si & si & si  & \ref{img4}\\\hline
+Funciones lineales & si & si & si & si & si  & \ref{img5} \\\hline
+Constantes & si & si & si & si & si  & \ref{img6}\\\hline
 \end{tabular}
 \caption{Cuadro resumen de los registros encontrados en la unidad didáctica.}
 \label{Tablaresumen}
@@ -63,8 +112,10 @@ Constantes & si & si & si & si & si & 242 & \ref{img6}\\
 
 \printindex
 
+\appendix
+
 \bibliographystyle{abbrv}
-\bibliography{angelica5}  % memoria.bib es el nombre del fichero que contiene
+\bibliography{angelica5}  % angelica5.bib es el nombre del fichero que contiene
 
 
 \end{document}
