@@ -107,10 +107,10 @@ crear_asignatura() {
 
 	# Creamos el fichero base a partir de una plantilla
 	cat > "$abbr.tex" <<-EOF
-		\documentclass[palatino]{apuntes}
+		\documentclass[palatino]{apuntesURJC}
 
 		\title{$name}
-		\author{}
+		\author{Víctor de Juan}
 		\date{$docdate}
 
 		% Paquetes adicionales
