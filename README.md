@@ -1,4 +1,4 @@
-# Apuntes Ingeniería Informática - Matemáticas
+# Apuntes Máster Profesorado, especialidad Matemáticas.
 
 Esta es una colección de apuntes y trabajos del Máster de Profesorado - especialidad Matemáticas de la URJC. Están disponibles libremente ([licencia CC-BY-NC-SA](#licencia)). Si encuentras algún fallo o quieres contribuir, puedes mandarnos un pull request o abrir un [_issue_](https://github.com/VicDeJuan/MasterProfesorado/issues) en Github.
 
@@ -6,13 +6,21 @@ La documentación de los paquetes está en el [manual en PDF](https://github.com
 
 
 
+## Descarga
+
+En breves podrás descargar los apuntes en PDF, actualizados diariamente, [aquí](https://www.dropbox.com/sh/o0n1m0pvrzkjwu2/AACD7hQPwehXyOzOjgl5Kz5Pa?dl=0).
+
+
 ## Autores
-* [Gustavo Martínez](http://github.com/VicDeJuan)
+* [Víctor de Juan](https://github.com/VicDeJuan)
+* [Gustavo Martínez](https://github.com/gmartinezrisque)
 
 
 ### Contribuidores
 
-La plantilla básica, la clase de LaTeX, el manual y todo lo que no es el texto en sí ha sido desarrollado por  [Guillermo Julián Moreno](http://github.com/gjulianm) para los [Apuntes Mates-Informática](http://github.com/vicdejuan/Apuntes)
+La plantilla básica, la clase de LaTeX, el manual y todo lo que no es el texto en sí ha sido desarrollado por  [Guillermo Julián Moreno](http://github.com/gjulianm) para los [Apuntes Mates-Informática](http://github.com/vicdejuan/Apuntes), con alguna modificación realizada por [Víctor de Juan](https://github.com/VicDeJuan) para adaptarlos al Máster.
+
+El manual y los detalles técnicos de instalación han sido desarrollados en su totalidad por [Guillermo Julián Moreno](http://github.com/gjulianm). También ha desarrollado la funcionalidad de actualizar los PDF's a una carpeta de Dropbox, aunque ésta ha sido adaptada para el Máster.
 
 ## Detalles técnicos de LaTeX
 
