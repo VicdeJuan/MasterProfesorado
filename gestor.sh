@@ -3,6 +3,7 @@
 # ===================================================================
 # Utilidades
 
+
 # Modo seguro
 set -eu
 set -o pipefail
@@ -55,6 +56,22 @@ seleccionar_asignatura() {
 
 # ===================================================================
 # Sub comandos
+
+## build
+##
+## Compila todos los ficheros
+
+build() {
+
+	for dir in */; do
+		cd "$dir"
+		echo "Compilando $dir..."
+		latexmk -shell-escape -synctex=1 -pdf -silent -interaction=nonstopmode *.tex 2&>/dev/null  || echo ""
+		cd ..
+	done
+
+	INFO "Terminado con exito!"
+}
 
 ## crear_asignatura
 ##
@@ -277,6 +294,9 @@ ayuda() {
 	echo "uso: ./util.sh [subcomando] [argumentos]..."
 	echo "Subcomandos validos:"
 	echo
+	echo "${F_BOLD}build${F_RESET}"
+	echo "	 Compila todos los apuntes"
+	echo
 	echo "${F_BOLD}crear_asignatura${F_RESET} [nombre completo] [abreviatura]"
 	echo "   Crea la estructura de ficheros para una asignatura nueva"
 	echo "   Si no se proporciona una abrev, se usara el nombre sin espacios"
@@ -320,6 +340,7 @@ subcmd="${1:-ayuda}"
 shift || :
 case "$subcmd" in
 	# Comandos validos
+	build)				( build 				"$@" ) ;;
 	crear_asignatura)	( crear_asignatura  	"$@" ) ;;
 	limpiar)         	( limpiar           	"$@" ) ;;
 	compilar)        	( compilar          	"$@" ) ;;
@@ -336,4 +357,5 @@ case "$subcmd" in
 esac
 
 # Si llegamos aqui, no ha habido errores! Finalizamos
+
 exit 0;
