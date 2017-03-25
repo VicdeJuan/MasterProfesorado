@@ -1,4 +1,4 @@
-\documentclass[palatino]{apuntesURJC}
+\documentclass[palatino,nobuilddate,nochap]{apuntesURJC}
 
 \title{Práctica de Modelización}
 \subtitle{Matemáticas para la vida cotidiana}
@@ -16,7 +16,6 @@
 \maketitle
 % Contenido.
 
-\chapter{Práctica de Modelización}
 
 \section{Para profesores}
 
@@ -68,6 +67,7 @@ El profesor, aparte del guión de la práctica proporcionará las clásicas hoja
 \subsection{Presentación del problema}
 La experiencia de años como docentes nos ha permitido conocer los problemas habituales que suelen tener los alumnos de 1ª de Bachillerato a la hora de entender el concepto de recta pendiente a una curva en un determinado punto de la curva. Este concepto es fundamental en las matemáticas de 1º de Bachillerato y entender en detalle cual es su significado será de gran ayuda para el desarrollo de este curso y posteriores.
 
+\newpage
 \subsection{Bloque I: Ecuación de la recta dada un punto y una pendiente}
 
 \subsubsection{Concepto y cálculo de la pendiente de una recta}
@@ -79,10 +79,10 @@ La experiencia de años como docentes nos ha permitido conocer los problemas hab
 		\begin{tabular}{|c|c|c|c|}
 			\hline
 			a)&b)&c)&d)\\\hline
-			\addheight{\includegraphics[scale=0.3]{img/EjemploPendiente01.JPG}}& 
-			\addheight{\includegraphics[scale=0.4]{img/EjemploPendiente02.JPG}}& 
-			\addheight{\includegraphics[scale=0.5]{img/EjemploPendiente03.JPG}}& 
-			\addheight{\includegraphics[scale=0.4]{img/EjemploPendiente04.JPG}}
+			\includegraphics[scale=0.3]{img/EjemploPendiente01.JPG}& 
+			\includegraphics[scale=0.4]{img/EjemploPendiente02.JPG}& 
+			\includegraphics[scale=0.5]{img/EjemploPendiente03.JPG}& 
+			\includegraphics[scale=0.4]{img/EjemploPendiente04.JPG}
 			\\\hline			
 		\end{tabular}
 		\caption{}
@@ -92,11 +92,13 @@ La experiencia de años como docentes nos ha permitido conocer los problemas hab
 	\item ¿Qué es la pendiente de una recta? ¿Cómo se puede medir? ¿Ves alguna relación con el apartado anterior?
 	\vspace{\espaciover}
 
-	\item Calcular la pendiente de las siguientes rectas:
+	\item Calcular la pendiente de las rectas de la figura \ref{RectasParaPendientes}:
 
 	\begin{figure}[h]
-	\centering
-	\includegraphics[scale=0.4]{img/rectas.png}
+		\centering
+		\includegraphics[scale=0.4]{img/rectas.png}
+		\caption{Rectas para calcular sus pendientes}
+		\label{RectasParaPendientes}
 	\end{figure}
 
 	\vspace{\espaciover}
@@ -117,13 +119,13 @@ La experiencia de años como docentes nos ha permitido conocer los problemas hab
 
 
 \subsubsection{Rectas que pasan por puntos y puntos que pertenece a rectas}
-Completa la tabla \ref{tbl_puntospertenecen}, indicando si el punto (indicado por la fila) pertenece a la recta (indicado por la columna)
+Completa la tabla \ref{tbl_puntospertenecen}, indicando si el punto (indicado por la fila) pertenece a la recta (indicado por la columna).
 
 \begin{table}[hbtp]
 \centering
 \begin{tabular}{|c||c|c|c|c|}
 \hline
-\textbf{Recta} & $y=3x$ & $y = 3x-9 = 3·(x-3)$ & $y - 6 = 3x$ & $y - 6 = 3x - 9$\\\hline
+\textbf{Recta:} & $y=3x$ & $y = 3x-9 = 3·(x-3)$ & $y - 6 = 3x$ & $y - 6 = 3x - 9$\\\hline
 (0,0) &&&&\\\hline
 (0,3) &&&&\\\hline
 (3,0) &&&&\\\hline
@@ -170,17 +172,19 @@ Insipirándote en la tabla \ref{tbl_puntospertenecen}, intenta contestar a las s
 \paragraph{Recta que pasa por 2 puntos dada una gráfica}
 
 \subparagraph{Puntos en la gráfica}
-Observa la gráfica de $f=x^2-3$
+Observa la gráfica de $f(x)=x^2-3$
 \begin{figure}[h]
 \centering
 \includegraphics[scale=0.5]{img/parab.png}
+\caption{Gráfica de la función $f(x) = x^2-3$}
+\label{GraficaXcuad}
 \end{figure}
 
 \begin{enumerate}
 	\item ¿Qué coordenada vertical tiene el punto de coordenada horizontal $x=1.5$ si sabemos que pertenezca a la gráfica? (\textit{Sol: -0.75})
 	\item ¿Qué distancia \textit{horizontal} separa $A$ de $B$? ¿Y de $C$? ¿Y de $D$?
 	\item Escribe las coordenadas de $B,C,D$ en función de las de $A$.
-	\item Escribe las coordenadas de un punto genérico de la función a una distancia \textit{horizontal} $h$ del punto $A$.
+	\item Escribe las coordenadas de un punto genérico de la función a una distancia \textit{horizontal} $h$ del punto $A$. 
 \end{enumerate}
 
 
@@ -205,7 +209,8 @@ Con todos los pasos previos, calcula:
 	\item La recta tangente a la gráfica de la función $y=3x^3$ en el punto $x=2$. Para ello:
 	\subitem Calcula la pendiente que tendrá esa recta.
 	\subitem Calcula la coordenada vertical del punto $x=2$.
-	\subitem Escribe la ecuación de la recta:
+	\subitem Escribe la ecuación de la recta.
+	\vspace{2cm}
 	\item La recta tangente a la gráfica de la función $y=e^x$ en el punto $x=0$.
 	\item La recta tangente a la gráfica de una función cualquiera $y=f(x)$ en un punto cualquiera $x_0$.
 \end{enumerate}
@@ -229,6 +234,7 @@ Atendiendo a la figura \ref{img:perpen} contesta:
 	\subitem ¿Sabrías calcular la ecuación de la recta normal en los 3 casos del bloque III?
 \end{enumerate}
 
+\newpage
 \subsection{Evaluación}
 Los criterios que se han seguido para evaluar a los alumnos son los siguientes:
 \begin{enumerate}
