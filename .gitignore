@@ -1,4 +1,5 @@
 *.doc
+*.odt
 *.docx
 .DNI
 *.pyg
