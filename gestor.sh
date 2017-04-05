@@ -172,7 +172,7 @@ compilar() {
 	mkdir -p tikzgen
 
 	# Compilamos comprobando el codigo de retorno
-	if ! latexmk -r "../latexmkrc.pl" > /dev/null; then
+	if ! latexmk -shell-escape "../latexmkrc.pl" > /dev/null; then
 
 		ERR "Ha ocurrido un error fatal al compilar"
 		ERR "Informacion de diagnostico en"
