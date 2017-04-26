@@ -228,7 +228,7 @@ Como ya mencionamos anteriormente al hablar del \textbf{cifrado de César}, fuer
 
 \textbf{Almad al-Qalqashandi} escribió una enciclopedia compuesta por 14 volúmenes que incluía una sección de criptografía cuyo contenido se atribuye a \textbf{Ibn al-Durayhim} (1312 d.C - 1361 d.C.). Este trabajo incluye un estudio de los diferentes tipos de cifrado conocidos hasta el momento incluyendo, lógicamente, los cifrados por sustitución y por transposición. Además, por primera vez hasta la fecha, se incluía un sistema de cifrado con múltiples sustituciones para cada letra.
 
-Todos los \textbf{sistemas de cifrado} vistos hasta ahora eran vulnerables ante los ataques por análisis de frecuencia, siendo el cifrado polialfabético el primero en ser capaz de escapar de estos ataques. Este \textbf{criptosistema} fue explicado con claridad por el italiano \textbf{Leon Battista Alberti} en torno al año 1467 d.C, quien es conocido por ello como ``father of Western cryptology''.
+Todos los \textbf{sistemas de cifrado} vistos hasta ahora eran vulnerables ante los ataques por análisis de frecuencia, siendo el cifrado polialfabético el primero en ser capaz de escapar de estos ataques. Este \textbf{criptosistema} fue explicado con claridad por el italiano \textbf{Leon Battista Alberti} en torno al año 1467 d.C, quien es conocido por ello como el \textit{padre de la criptografía occidental}.
 
 El \textbf{criptosistema} desarrollado por Alberti, conocido como \textbf{cifrado de Alberti} era un sistema de cifrado por sustitución con una peculiaridad: el alfabeto empleado para realizar la sustitución\footnote{El que indica con qué letra cifrada se corresponde cada letra en claro.} podía cambiar en cualquier momento.
 
@@ -340,7 +340,7 @@ La criptografía, el criptoanálisis, los agentes secretos y la traición estuvi
 
 Este complot tenía por objeto destituir a la \textbf{Reina Elizabeth}, una protestante, en favor de su prima \textbf{Mary}, reina de Escocia y católica. El objetivo a largo plazo era la invasión de Inglaterra por parte del \textbf{Rey Fernando II} de España.
 
-El jefe de criptografía del \textbf{Rey de Francia Luis XIV} fue \textbf{Antonie Rossignol} y, junto con su familia, creó lo que hoy en día se conoce como el \textbf{Great Cipher} (en español, gran cifrado). Este nombre le fue asignado porque permaneció sin solución desde sus comienzos hasta el años 189 d.C. cuando el criptógrafo del ejército Francés \textbf{Etienne Bazeries} lo resolvió.
+El jefe de criptografía del \textbf{Rey de Francia Luis XIV} fue \textbf{Antonie Rossignol} y, junto con su familia, creó lo que hoy en día se conoce como el \textbf{Great Cipher} (en español, gran cifrado). Este nombre le fue asignado porque permaneció sin solución desde sus comienzos hasta la década de 1890 d.C. cuando el criptógrafo del ejército Francés \textbf{Etienne Bazeries} lo resolvió.
 
 Fuera de Europa, cuando los Mongoles acabaron con la época de explendor de la cultura árabe, la criptografía se mantuvo, en comparación, estancada. En Japón no hay muestras del uso de la criptografía hasta 1510 d.C. y no emplearon técnicas avanzadas hasta la apertura del país hacia occidente a comienzos del año 1860 d.C.
 
@@ -670,7 +670,7 @@ Dada esta restricción podemos calcular un total de
 \[\frac{{26 \choose 2} \cdot {24 \choose 2} \cdot ... \cdot {2 \choose 2}}{13!} =\frac{26!}{13!2^{13}} \approx 1.01 \cdot 10^{15} \text{ claves posibles }\]
 que sigue siendo un número muy elevado pero es notablemente inferior al calculado sin considerar esta restricción.
 
-Otra importante \textbf{debilidad} del sistema es que una letra \textbf{nunca sería cifrada a si misma}. Esta propiedad resultaba muy útil a la hora de buscar en el mensaje cifrado pequeños fragmentos de texto que se espera se hayan usado en el texto original, puesto que permitía eliminar regiones del texto cifrado.
+Otra importante \textbf{debilidad} del sistema es que una letra \textbf{nunca sería cifrada a sí misma}. Esta propiedad resultaba muy útil a la hora de buscar en el mensaje cifrado pequeños fragmentos de texto que se espera se hayan usado en el texto original, puesto que permitía eliminar regiones del texto cifrado.
 
 Si se considera que una cierta porción del mensaje cifrado se corresponde con un cierto texto original y una sola letra queda inmutada, puede descartarse. Esta idea fue explotada por el matemático \textbf{Alan Turing} en el desarrollo de la \textbf{Bomba Británica}, la máquina que logró derrotar a \textbf{Enigma}.
 
@@ -975,7 +975,7 @@ es decir, elementos de $\mathbb{Z}_n$.
 
 Esta operación acostumbra a realizarse interpretando el texto como un número representado en base $n$ donde $n$ es el número total de caracteres válidos en el lenguaje utilizado.
 
-\item La función para cifrar es $f_e(m)=m^e \mod n$, fácil de aplicar y de conocer, pues $d$ y $n$ son públicos.
+\item La función para cifrar es $f_e(m)=m^e \mod n$, fácil de aplicar y de conocer, pues $e$ y $n$ son públicos.
 
 \item La función para descifrar es $f_d^{-1}(c)=c^d \mod n$, fácil de aplicar pero no de conocer, pues $d$ es secreto.
 
@@ -1094,7 +1094,7 @@ Se trata de factorizar el número $n=2041$ tomando como conjunto de primos:
 
 Aplicando los pasos descritos anteriormente tenemos:
 \[\begin{array}{l}
-\lceil\sqrt{2047}\rceil = 46 = x_0 \\
+\lceil\sqrt{2041}\rceil = 46 = x_0 \\
 y_0 = Q(46) = 75 = 3 \cdot 5^2\\
 y_1 = Q(47) = 168 = 2^3 \cdot 3 \cdot 7\\
 y_2 = Q(48) = 263 \text{ no es factorizable en }\mathcal{P} \\
