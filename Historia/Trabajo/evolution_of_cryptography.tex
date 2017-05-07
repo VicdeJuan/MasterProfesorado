@@ -197,8 +197,9 @@ Para ilustrar la explicación del criptosistema veamos un caso concreto de un me
 
 Así tendríamos:
 \begin{verbatim}
-Texto original:  THE QUICK BROWN FOX JUMPS OVER THE LAZY DOG
-Texto cifrado:   QEB NRFZH YOLTK CLU GRJMP LSBO QEB IXWV ALD
+Texto original:  HISTORIA DE LAS MATEMÁTICAS
+Clave: MATE
+Texto cifrado:   SIMXARBE OE EEE MTXPMTXTCTW
 \end{verbatim}
 
 \subsubsection{Ataques contra el Criptosistema César}
@@ -212,11 +213,11 @@ Una vez sabemos qué lenguaje se está utilizando y cuales son las letras más f
 
 \subsubsection{Modelización actual del Criptosistema César}
 
-Suponiendo que trabajamos con un alfabeto de 26 letras, donde cada letra viene representada por un número según su posición en el alfabeto y empezando con $A=0$, para cada letra del texto que queremos cifrar la función de cifrado sería:
-\[C_n(x)=(x+n) \mod 26\]
+Suponiendo que trabajamos con un alfabeto de 27 letras, donde cada letra viene representada por un número según su posición en el alfabeto y empezando con $A=0$, para cada letra del texto que queremos cifrar la función de cifrado sería:
+\[C_n(x)=(x-n) \mod 27\]
 
 La clave de este sistema es el valor de $n$ sin el cual no podemos leer el mensaje. Una vez conocido este valor, la función de descifrado, que también actuaría caracter a caracter, será:
-\[D_n(x)=(x-n) \mod 26\]
+\[D_n(x)=(x+n) \mod 27\]
 
 \section{Edad Media hasta 1800}
 
@@ -290,7 +291,7 @@ La idea de que no puede confiarse la seguridad del sistema en el desconocimiento
 ``Un criptosistema debe ser seguro cuando todo acerca del sistema es público excepto la clave.''
 \end{center}
 
-A fin de mejorar esta vulnerabilidad, en 1553 d.C. el italiano \textbf{Giovan Battista Bellasco} desarrolló una importante extensión del \textbf{cifrado de Trithemius} dando lugar al \textbf{cifrado de Vigenere}.
+A fin de mejorar esta vulnerabilidad, en 1553 d.C. el italiano \textbf{Giovan Battista Bellaso} desarrolló una importante extensión del \textbf{cifrado de Trithemius} dando lugar al \textbf{cifrado de Vigenere}.
 
 Este sistema se basa en la concatenación de diferentes \textbf{cifrados César} basándose en las letras de una palabra clave.
 
@@ -872,7 +873,7 @@ Donde $A$ y $B$ representan, como es habitual en criptografía, los dos sujetos 
 
 Como cada participante de la comunicación conoce el valor de $g^a$ y $b$ o de $g^b$ y $a$, puede calcular la clave mediante una simple operación de exponenciación.
 
-El generador, $g$ es parte de la logística del sistema y es conocido por todo el mundo. Así mismo, los mensajes $g^a$ y $g^b$ pueden ser interceptados por terceros mas seguirá siendo imposible conocer $g^{ab}$, que es la clave del sistema.
+El generador, $g$ es parte de la logística del sistema y es conocido por todo el mundo. Así mismo, los mensajes $g^a$ y $g^b$ pueden ser interceptados por terceros pero seguirá siendo imposible conocer $g^{ab}$, que es la clave del sistema.
 
 Desde el punto de vista matemático, lo que nos garantiza la imposibilidad de calcular $a$ a partir de $g$ y $g^a \mod p$ es la imposibilidad de resolver el \textbf{problema del logaritmo discreto} en tiempo lineal. El mejor algoritmo conocido hasta el momento es de tiempo subexponencial que resulta insuficiente para descifrar, a tiempo, el sistema usado.
 
@@ -997,121 +998,6 @@ Puesto que la función $\varphi$ de Euler es multiplicativa, y sabiendo que $\va
 A partir de aquí se obtiene:
 \[f_d^{-1}(f_e(m)) = m^{ed} = m^{1+k(p-1)(q-1)} = m \cdot \left(m^{(p-1)(q-1)}\right)^k\mod n = \atop = m \cdot 1^k \mod n = m \mod n\]
 
-\subsubsection{Ataques contra RSA}
-
-Supongamos que un cierto usuario publica la clave $(n,e)$ y un atacante intercepta un mensaje dirigido a él. ¿Cómo puede un atacante descifrar el mensaje?.
-
-Lo primero que hay que hacer es factorizar el número $n=25613$. Para ello puede emplearse \textbf{método de factorización de Fermat}.
-
-La idea del método es que, una vez representado un número como diferencia de cuadrados, es trivial su descomposición en dos factores, con lo que se ha reducido la complejidad del problema a resolver. Es decir:
-\[n = a^2-b^2 = (a-b)(a+b) \text{ siendo } (a\pm b) \neq 1\]
-
-Cabe recalcar que \textbf{todo número impar compuesto se puede representar de esta forma}, puesto que:
-\[n=c\cdot d \Rightarrow n = \left( \frac{c+d}{2}\right)^2 - \left( \frac{c-d}{2}\right)^2\]
-
-Al exigir que $n$ sea impar se fuerza que tanto $c$ como $d$ también lo sean y, por tanto, su suma/diferencia sea par. Si ambos valores fuesen pares también funcionaría este método, pero si $n$ es par no podemos garantizar que tanto $c$ como $d$ también lo sean.
-
-Por tanto, el problema se ``reduce'' a buscar dos números cuadrados cuya diferencia sea $n$, es decir:
-\[n=x^2-y^2 \implies x = \sqrt{n+y^2}\]
-
-El procedimiento lógico a seguir pasa por empezar a probar con el menor entero $x>\sqrt{n}$ y, para cada uno de esos valores, tratar de encontrar un $y$ que satisfaga la ecuación.
-
-Para cada $x$ que la comprobación de la existencia de la $y$ correspondiente requiere de una potencia, una resta y una raíz cuadrada, operaciones que se realizan rápidamente con un ordenador.
-
-Aquí aparece la \textbf{Idea de Kraitchik~1922} que se basa en que no es necesario que $x^2-y^2 =n$ sino que basta con:
-\[x^2 = y^2 \mod n \implies x \neq \pm y \mod n\]
-puesto que
-\[x^2 = y^2 \mod n \iff n|(x^2-y^2) \equiv n|(x-y)(x+y)\]
-
-Si  $n=p\cdot q$ hay tres posibilidades:
-\begin{enumerate}
-\item
-\[n|(x-y) \implies x=y \mod n\]
-
-Este caso no puede darse pues implicaría $n=0$.
-
-\item
-\[n|(x+y) \implies x=-y \mod n\]
-
-Esta situación tampoco tiene cabida ya que, igual que en el caso anterior, tendríamos $n=0$
-
-\item
-\[p|(x+y), q|(x-y)\]
-Única situación viable.
-\end{enumerate}
-
-Así, el método consiste en calcular el máximo común divisor de $x-y$ y de $n$:
-\[m.c.d.(x-y,n) = \left\{ \begin{array}{ll}
-             n &   \text{Caso 1} \\
-             1 &   \text{Caso 2}\footnotemark\\
-             p,q & \text{Caso 3 y por tanto x-y es factor común.}
-             \end{array}\right.\]\footnotetext{Si $(x-y,n)=1$, como $n|(x-y)(x+y) \implies n|(x+y)$ }
-
-
-Basándose en esta idea el algoritmo a emplear es:
-
-\begin{enumerate}
-\item Se fija un conjunto de primos:
-\[\mathcal{P} = \{p_1,...,p_N\}\]
-
-\item Se toma $x_0=\lceil\sqrt{n}\rceil$ con el que se iniciará el procedimiento.
-
-\item Se calcula $Q(x_0)$ y factoriza en base $\mathcal{P}$, es decir,
-\[Q(x_0) = \prod_i p_i^{a_{i0}}\]
-
-\item Aplicando el mismo procedimiento sobre $Q(x_j=x_0+j)$ se obtiene, un conjunto de $x_j$ para los que $Q(x_j)$ factoriza sobre $\mathcal{P}$.
-
-Estos números que factorizan en $\mathcal{P}$ se denominan \textbf{$\mathcal{P}$-suaves}
-\end{enumerate}
-
-Una vez se ha obtenido el conjunto de números $\mathcal{P}$-suaves, se calcula:
-\[\prod_{j=0}^rQ(x_j) \mod n=\prod_{j=0}^rx_j^2 \mod n\]
-puesto que el término $n$ de cada $Q(x_i)$ desaparece al hacer el módulo.
-
-Puesto que el objetivo es tener $x^2=y^2 \mod n$, hay que conseguir un cuadrado perfecto a la derecha de la igualdad.
-\[\prod_j\prod_ip_i^{a_{ij}} = y^2 \implies x^2 = y^2 \mod n\]
-
-Pero, para que esto sea posible, el exponente de cada $p_i$ debe ser un número par, es decir:
-\[\sum_ja_{ij} \text{ sea par para } i={1,…,N}\]
-
-Puesto que
-\[\prod_j\prod_ip_i^{a_{ij}} = \prod_i p_i^{\sum_ja_{ij}}\]
-
-En lugar de considerar el producto de todos los $Q(x_i)$ que se factorizan en $\mathcal{P}$, hay que tomar el producto de sólo algunos de los $Q(x_i)$, los necesarios para que su producto sea un cuadrado perfecto.
-
-Esta selección de los $Q(x_i)$ necesarios puede generalizarse elevándolos a una función $\delta_j$ que valga 1 ó 0 según corresponda.
-\[\prod_{j=1}^r Q(x_j)^{δ_j} (\text{con } δ_j = 1,0)  = \prod_ip_i^{\sum_jδ_ja_{ij}} \mod n\]
-
-Finalmente, hay que resolver el siguiente sistema de $n$ incógnitas:
-\[\left\{ \begin{array}{l}
-\sum\limits_{j=1}^{r}a_{ij}δ_j = 0 \mod 2 \\
-\text{ para } i=1,...,N
-\end{array}\right.\]
-que, con $r >> N$, tendrá solución.
-
-Este procedimiento puede ilustrarse con el siguiente ejemplo numérico:
-
-Se trata de factorizar el número $n=2041$ tomando como conjunto de primos:
-\[\mathcal{P} = \{ 2,3,5,7\}\]
-
-Aplicando los pasos descritos anteriormente tenemos:
-\[\begin{array}{l}
-\lceil\sqrt{2041}\rceil = 46 = x_0 \\
-y_0 = Q(46) = 75 = 3 \cdot 5^2\\
-y_1 = Q(47) = 168 = 2^3 \cdot 3 \cdot 7\\
-y_2 = Q(48) = 263 \text{ no es factorizable en }\mathcal{P} \\
-y_3 = Q(49) = 360 = 2^3 \cdot 3^2 \cdot 5\\
-y_4 = Q(50) = 459 \text{ no es factorizable en }\mathcal{P} \\
-y_5 = Q(51) = 560 = 2^4 \cdot 5 \cdot 7
-\end{array}\]
-
-Multiplicando módulo $n$ los $Q(x_i)$ $\mathcal{P}$-suaves se obtiene:
-\[(\underbrace{46\cdot 47 \cdot 49 \cdot 51}_{x})^2 = (\underbrace{2^5\cdot 3^2 \cdot 5^2 \cdot 7}_y)^2\]
-
-Por último se obtiene $m.c.d.(x-y,n)=13$ con lo que la factorización queda:
-\[2041 = 13 \cdot 157\]
-
-
 \section{La era de la computación cuántica}
 \subsection{Ordenador cuántico}
 Un ordenador tradicional tiene una memoria compuesta por bits, cada uno de los cuales representa un 1 o un 0. Un ordenador cuántico trabaja con secuencias de qbits, donde un simple qbit puede representar un 1, un 0 o cualquier superposición cuántica de estos dos estados.
@@ -1125,84 +1011,6 @@ A modo de ejemplo, consideremos un ordenador tradicional con un registro de 3 bi
 Un ordenador clásico como el que acabamos de mencionar también puede representar su estado de forma similar al ordenador probabilístico, tomando un vector de 8 coordenadas donde sólo una tendrá valor 1 mientras que el resto serán 0.
 
 Por otro lado, el estado de un ordenador cuántico de tres qbits viene representado por un vector de 8 dimensiones, llamado \textbf{ket}, donde cada coeficiente es un número complejo. En esta ocasión es la suma de los módulos de estos coeficientes la que debe ser igual a 1. Estas magnitudes cuadradas representan la probabilidad de cada uno de los estados. No obstante, cada número complejo codifica no sólo una magnitud sino también una dirección en el plano, la diferencia de fase entre dos coeficientes resulta en un parámetro significativo.
-
-\subsection{Criptografía post-cuántica}
-Con el nombre de \textbf{criptografía post-cuántica} se hace referencia a los algoritmos criptográficos (generalmente de clave pública) pensados para ser seguros ante ataques con ordenadores cuánticos.
-
-Este requisito extra de seguridad no se satisface por los principales cifrados de clave pública empleados hoy en día. El problema de estos algoritmos es que su seguridad depende de alguno de los siguientes tres problemas matemáticos, catalogados como \textbf{problemas difíciles}:
-\begin{enumerate}
-\item Problema de la factorización.
-\item Problema del logaritmo discreto.
-\item Logaritmo de curva elíptica discreta.
-\end{enumerate}
-
-Estos tres problemas pueden ser fácilmente resueltos empleando un ordenador cuántico de suficiente tamaño por medio del \textbf{algoritmo Shor}. Aunque los ordenadores cuánticos de hoy en día no son suficientemente grandes como para romper los cifrados usados hoy en día, el avance en la tecnología permitirá incrementar su tamaño haciendo nuestros sistemas de seguridad vulnerables.
-
-Por otro lado, cabe destacar que los algoritmo de clave simétrica se consideran seguros frente a ataques con ordenadores cuánticos pues estos ataques son ataques por fuerza bruta. Así, si el ordenador cuántico es capaz de probar todas las claves en $x$ veces menos tiempo que un ordenador actual, basta con tomar una clave $x$ veces mayor para mantener el mismo nivel de seguridad.
-
-\subsection{Algoritmo de Shor}
-Este algoritmo, que toma el nombre del matemático \textbf{Peter Shor} es un algoritmo cuántico para la factorización de enteros, formulado en 1994. Básicamente este algoritmo encuentra los factores primos de un entero dado $n$.
-
-En un ordenador cuántico, este algoritmo tiene un \textbf{tiempo polinómico}, es decir, el tiempo empleado en factorizar crece de manera polinómica con el tamaño de la entrada. Esta eficiencia es significativamente superior al mejor algoritmo de factorización conocido hasta la fecha, que tiene un tiempo subexponencial.
-
-El \textbf{algoritmo de Shor} se centra en encontrar factores primos de un número compuesto impar, puesto que el caso par es trivialmente divisible por una potencia de 2 reduciéndose el problema a la factorización de un número impar.
-
-Por otro lado, el entero $n$ no puede ser potencia de un primo. Para garantizar que no lo es basta con comprobar si
-\[\exists k \in \mathbb{N} \text{ t.q. } \sqrt[k]{n} \in \mathbb{N}, \text{ sabiendo que } k\leq \log_2(n)\]
-
-El algoritmo se divide en dos bloques de cómputos: la \textbf{reducción del problema de descomponer en factores al problema de encontrar el orden}, que se lleva a cabo en un ordenador clásico, y la \textbf{búsqueda del período}, que debe realizarse con un ordenador cuántico.
-
-El algoritmo completo queda como sigue:
-\begin{enumerate}
-\item Se escoge un número pseudo-aleatorio $a$ tal que $a<n$.
-\item Con ayuda del algoritmo de Euclides se calcula el máximo común divisor de $a$ y $n$.
-\[m.c.d.(a,n) = \left\{ \begin{array}{lcl}
-1 & \Rightarrow & \text{Continúa el algoritmo}\\
-\text{otro caso} & \Rightarrow & \text{Fin. Encontrado factor}
-\end{array}\right.\]
-\item Se calcula el período, $r$, de $f$, siendo es:
-\[f(x)=a^x \mod n\]
-para lo que hay que emplear el algoritmo cuántico que no veremos en este trabajo.
-\item Si $r$ es impar hay que volver a empezar.
-\item Si se cumple
-\[a^{\frac{r}{2}}=-1 \mod n\]
-hay que volver al comienzo.
-\item Llegados a este punto, los factores de $n$ son:
-\[m.c.d\left(a^{\frac{r}{2}}\pm 1, n\right)\]
-\end{enumerate}
-
-Veamos \textbf{por qué este algoritmo funciona}.
-
-Para empezar, hay que notar que los enteros menores que $n$ y coprimos $n$ forman un grupo abeliano finito bajo la operación de multiplicación modular con módulo $n$. Denotemos este grupo como $G$, cuyo tamaño viene dado por la función $\varphi$ de Euler.
-
-Al finalizar el paso 2 del algoritmo, tenemos un elemento $a$ de este grupo que debe tener un orden finito $r$. Este orden no es más que el menor entero positivo para el que se satisface
-\[a^r = 1 \mod n \Rightarrow a^r-1 = 0 \mod n \Rightarrow n|(a^r-1)\]
-
-Supongamos que este orden es par. En ese caso tenemos que $b=a^{\frac{r}{2}} \mod n$ es una raíz cuadrada de la unidad módulo $n$, como prueba la siguiente ecuación:
-
-\[b^2 \mod n = \left(a^{\frac{r}{2}}\right)^2 \mod n = a^r \mod n = 1 \mod n\]
-
-Sabemos que $b\neq 1$ puesto que $r$ es, por definición, el entero más pequeño tal que $a^{r}=1\mod n$.
-
-Tras finalizar el paso 5 del algoritmo, podemos afirmar que $b$ es una raíz cuadrada de la unidad módulo $n$ distinta de $1$ y $-1$.
-
-Por último, tenemos que comprobar que
-\[d=m.c.d.(b-1,n)\]
-es un factor propio de $n$, es decir, divide a $n$ sin ser 1 ni $n$.
-
-Si fuese $d=n$ tendríamos que $n$ divide a $b-1$ lo que implicaría que $b=1 \mod n$, que ya hemos visto no es posible.
-
-Por otro lado, si tuviésemos $d=1$ por la identidad de Bezout, podremos garantizar la existencia de dos enteros $u$, $v$ tales que:
-\[(b-1)u+n\cdot v = 1\]
-Multiplicando a ambos lados por $(b+1)$ obtenemos
-\[(b^2-1)u+N(b+1)v = b+1\]
-Aplicando módulos a ambos lados de la ecuación llegamos a:
-\[(b^2-1)u+N(b+1)v \mod n = b+1 \mod n \equiv \]
-\[\equiv N(b+1)v \mod n = b+1 \mod n \equiv \]
-\[\equiv 0 = b+1 \mod n \Rightarrow b=-1 \mod n \]
-Con lo que llegamos a una contradicción, pues el paso 5 nos garantiza que esto no puede ocurrir.
-
-Por tanto, queda claro que el valor $d$ obtenido es un factor propio de $n$.
 
 %----------------------------------------------------------------------------------------
 %	BIBLIOGRAPHY
