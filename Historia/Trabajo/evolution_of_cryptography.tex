@@ -1,11 +1,12 @@
 \documentclass[nochap]{apuntesURJC}
 
+
+
+
+
 \title{Historia de la criptografía}
 \author{Víctor de Juan, Gustavo Martínez, Cristina Martínez y Virginia Vadillo}
 \date{16/17 C1}
-
-
-
 
 
 \begin{abstract}
@@ -448,7 +449,7 @@ Una opción es tratar de formar una primera palabra con sentido con las letras i
 
 Otra posibilidad, es conocer una palabra que aparezca seguro en el mensaje. Cuanto mayor sea la longitud de la palabra mejor será. Una vez se conoce que una determinada palabra está en el mensaje original, basta con buscar las letras de la palabra en el mensaje lo que nos da una idea de la ordenación empleada y del valor $n$.
 
-Vamos a ilustrar estas ideas con un ejemplo que ``imita'' el \textbf{Zimmermann telegram}%, extraido de \cite{Wikipedia:ZimmermanExample}.
+Vamos a ilustrar estas ideas con un ejemplo que ``imita'' el \textbf{Zimmermann telegram}, extraido de \cite{Wikipedia:ZimmermanExample}.
 
 El mensaje cifrado que fue interceptado por los ingleses decía:
 \begin{center}
@@ -506,7 +507,6 @@ Por último, sabiendo que el mensaje está escrito en inglés, parece razonable 
 \end{center}
 
 \subsubsection{Zimmermann Telegram}
-%Tal y como narra \cite{Book:TheCodebrakers} s
 Sobre las diez y media de la mañana del 17 de Enero de 1917, \textbf{William Montgomery}, un estudiante que estaba sirviendo al cuerpo de criptoanalistas de la \textbf{Habitación 40} encontró lo que parecía ser un importante mensaje.
 
 Sus instintos eran ciertos, el criptograma que encontró el joven, y que leyó parcialmente junto a su compañero \textbf{Nigel de Grey}, se convertiría en el \textbf{cifrado} con la solución más difícil de alcanzar y más importante de la historia.
@@ -517,8 +517,7 @@ Los criptógrafos de la \textbf{Habitación 40} sabían, por sus previos anális
 
 Entre otros, algunos de los cifrados de esta familia que ya habían resuelto eran 0097, 0086, 0064, etc. El \textbf{cifrado 0075} era un código nuevo que la Oficina de Asuntos Exteriores alemana había distribuido por primera vez en Julio de 1916 para las misiones alemanas en Viena, Sofía, Constantinopla, Bucarest, Copenague, Estocolmo, Berna y Oslo. De algún modo los británicos lograron hacerse con suficientes mensajes cifrados con este sistema para conseguir que \textbf{Montgomery} y \textbf{de Grey} lograran romper el cifrado.
 
-%Tal y como se describe en \cite{Book:TelegraphDiplomacy}, e
-El \textbf{código 0075} consiste en unas 10,000 palabras o frases, ordenadas de forma aleatoria, cada una de las cuales se corresponde con un número entre 0000 y 9999.
+Tal y como se describe en \cite{Book:TelegraphDiplomacy}, el \textbf{código 0075} consiste en unas 10,000 palabras o frases, ordenadas de forma aleatoria, cada una de las cuales se corresponde con un número entre 0000 y 9999.
 
 Romper un código así desde cero requiere identificar los bloques que representan las palabras más comunes. Aunque estos códigos trataban de defenderse de este tipo de ataques definiendo múltiples bloques para representar las palabras mas comunes, quienes escribían los mensajes tendían a aprender uno o dos bloques para esas palabras y a usarlos repetidamente.
 
@@ -1015,13 +1014,12 @@ Por otro lado, el estado de un ordenador cuántico de tres qbits viene represent
 %----------------------------------------------------------------------------------------
 %	BIBLIOGRAPHY
 %----------------------------------------------------------------------------------------
-%\newpage
-%\nocite{*}
-%\renewcommand{\refname}{\spacedlowsmallcaps{Bibliografía}} % For modifying the bibliography heading
+\newpage
+\nocite{*}
+\renewcommand{\refname}{\spacedlowsmallcaps{Bibliografía}} % For modifying the bibliography heading
 
-%\bibliographystyle{unsrt}
-
-%\bibliography{sample.bib} % The file containing the bibliography
+\bibliographystyle{unsrt}
+\bibliography{memoria} % The file containing the bibliography
 
 %----------------------------------------------------------------------------------------
 
