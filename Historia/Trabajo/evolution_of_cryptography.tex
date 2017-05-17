@@ -630,21 +630,21 @@ Combinando estas operaciones obtenemos que la máquina \textbf{Enigma} consta de
 \[\frac{60\cdot 26^3 \cdot {26 \choose 2} \cdot {24\choose 2}\cdot {22\choose 2}\cdot {20\choose 2}\cdot {18\choose 2}\cdot {16\choose 2}}{6!}\approx 8.469 \cdot 10^{17}  \text{ claves diferentes}\]
 
 \subsection{Debilidad de Enigma}
-La forma de trabajar con \textbf{Enigma} era mediante un libro de claves donde cada clave era empleada a lo largo de todo el día para todas las comunicaciones.
 
-No obstante, si toda la flota empleaba el mismo sistema de cifrado y los mensajes eran fácilmente interceptables (puesto que se comunicaban por radio) al final sería relativamente sencillo que el enemigo descifrara la clave. Para solucionar esto, lo que se hacía es que al comienzo de cada mensaje se enviaban 3 letras, que indicaban la nueva posición de los rotores que debería emplearse a partir de ese momento.
+Si toda la flota empleaba el mismo sistema de cifrado y los mensajes eran fácilmente interceptables (puesto que se comunicaban por radio) al final sería relativamente sencillo que el enemigo descifrara la clave si utilizaban siempre la misma.
+%
+Para solucionar esto, lo que se hacía era modificar diariamente la clave utilizada y disponer de un libro de claves en el que se establecía qué configuración de la máquina correspondía a qué día.
+%
+Además, este libro era diferente para cada mes, de tal manera que si el enemigo se hacía con un libro, sólo podría descifrar los mensajes de lo que quedara de mes.
 
-Así, un esquema del proceso de transmisión del mensaje sería:
-\begin{enumerate}
-\item Se configura la máquina con la clave del día.
-\item Se transmite la clave del mensaje dos veces.
-\item Se configura la máquina colocando los rotores en la posición indicada.
-\item Transmitimos el mensaje.
-\end{enumerate}
 
-Aquí se encuentra una gran \textbf{debilidad del criptosistema}, el envío de la clave dos veces, puesto que nos adelanta cierta información acerca de la posición inicial de los rotores.
-
-El otro gran problema que puso en peligro la seguridad del sistema era el hecho de que el primer mensaje del día siempre informaba del tiempo atmosférico, lo que supone una información muy valiosa para el atacante, que vería facilitadas sus labores de criptoanálisis.
+Ante un sistema así, ¿cómo se puede romper?
+%
+El gran problema que puso en peligro la seguridad del sistema era el hecho de que el primer mensaje del día siempre informaba del tiempo atmosférico, lo que supone una información muy valiosa para el atacante, que vería facilitadas sus labores de criptoanálisis.
+%
+Todos los comienzos de mensajes incluirían la palabras "tiempo", "presión atmosférica", "informe"... 
+%
+La labor de descifrar se reduce notablemente, aunque seguía siendo una tarea muy difícil.
 
 
 \subsubsection{Descifrado de mensajes con Enigma}
