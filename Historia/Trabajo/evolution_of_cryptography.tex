@@ -190,7 +190,7 @@ En esta situación de guerra constante a lo largo de un basto territorio comenz�
 \subsubsection{Uso del Criptosistema Cesar}
 Los romanos desarrollaron su propio criptosistema de sustitución conocido como \textbf{Criptosistema de Cesar}.
 
-La idea de este criptosistema consiste en la sustitución de cada letra del abecedario por aquella situada $n$ posiciones más adelante. En función del $n$ empleado nos encontramos con distintos criptosistemas.
+La idea de este criptosistema consiste en la sustitución de cada letra del abecedario por aquella situada $n$ posiciones más adelante o más atrás. En función del $n$ empleado nos encontramos con distintos criptosistemas.
 
 Este criptosistema recibe el nombre en honor a \textbf{Julio César} quien, según \textbf{Suetonius}, lo usaba con un desplazamiento de 3 caracteres para proteger mensajes militares de importancia.
 
@@ -277,11 +277,6 @@ se transforma en
 \end{center}
 que resulta imposible de comprender si no se conoce el método de descifrado.
 
-\begin{verbatim}
-Texto original:  HISTORIA DE LAS MATEMÁTICAS
-Clave: MATE
-Texto cifrado:   SIMXARBE OE EEE MTXPMTXTCTW
-\end{verbatim}
 
 \begin{figure}[hbtp]
 \centering
@@ -302,6 +297,13 @@ A fin de mejorar esta vulnerabilidad, en 1553 d.C. el italiano \textbf{Giovan Ba
 Este sistema se basa en la concatenación de diferentes \textbf{cifrados César} basándose en las letras de una palabra clave.
 
 El uso de este \textbf{cifrado} parte de la definición de una palabra clave de longitud $n$ donde cada letra se interpreta como un número (de manera lógica siendo $A=0$) que será la clave de un \textbf{cifrado de César}. A partir del texto original y conociendo la \textbf{palabra clave} se cifra la primera letra con el \textbf{cifrado de César} correspondiente a la primera letra de la palabra clave y así sucesivamente. Al terminar de usar la última letra de la palabra clave, se vuelve a empezar.
+
+\begin{verbatim}
+Texto original:  HISTORIA DE LAS MATEMÁTICAS
+Clave: MATE
+Texto cifrado:   SIMXARBE OE EEE MTXPMTXTCTW
+\end{verbatim}
+
 
 \subsubsection{Ataque contra el criptosistema de Vigenere}
 Para el atacante no es necesario conocer la palabra clave directamente sino que basta con conocer la longitud de esta. Una vez es sabido que se ha empleado una palabra de longitud $n$, basta con tomar aquellas letras situadas a distancia $n$ y analizarlas como resultado de un cifrado de César independiente que, recordemos, se realizaba por medio de un \textbf{análisis de frecuencias}.
